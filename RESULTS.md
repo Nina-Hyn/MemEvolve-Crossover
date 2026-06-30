@@ -1,8 +1,5 @@
-# Experiment Results (GAIA validation tasks 1–20)
+## Experiment Results on GAIA subset
 
-Hold-out evaluation subset. Judge: `deepseek-v4-flash`. Max steps: 40.
-
-## Summary
 
 | Memory System | Category | Perf. | Level 1 · 2 · 3 | Token Cost | #Steps (action) |
 |---------------|----------|-------|-----------------|------------|-------------------|
@@ -13,6 +10,7 @@ Hold-out evaluation subset. Judge: `deepseek-v4-flash`. Max steps: 40.
 | adaptive_trajectory_knowledge | Evolved | 15/20 | 4/6 · 11/12 · 0/2 | 157,235 | 6.8 |
 | **Echo-Base** | **Evolved** | **16/20** | **5/6 · 10/12 · 1/2** | **110,724** | **6.3** |
 
+- **Judge**: `deepseek-v4-flash`.
 - **#Steps**: average agent action steps (tool-calling rounds) per task.
 - **Token Cost**: average total tokens per task.
 
