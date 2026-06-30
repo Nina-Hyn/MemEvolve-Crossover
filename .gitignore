@@ -12,6 +12,8 @@ build/
 # Runtime / evolution artifacts (generated on fresh runs)
 memevolve_k2_work/
 gaia_output/holdout_k2_evolved_*/
+!gaia_output/holdout_k2_evolved_20260630_083152/
+!gaia_output/holdout_k2_evolved_20260630_083152/**
 gaia_output/*_run.log
 *.log
 
