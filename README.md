@@ -1,10 +1,10 @@
 ## Introduction
 
-This repository is built upon the open-source MemEvolve framework, developed for the AI online assessment project Memory Systems that Evolve.
+This repository is built upon the open-source **MemEvolve** framework, developed for the AI online assessment project **Memory Systems that Evolve**.
 It mainly contains three core functionalities as listed below:
-- Benchmark evaluation for Agent-KB, Cerebra and Voyager on the 20-sample GAIA test subset
-- K=2 multi-parent crossover memory meta-evolution workflow
-- Full evaluation pipeline for three hybrid evolved memory systems on the same GAIA subset
+- Benchmark evaluation for Agent-KB, Cerebra and Voyager on the 20-sample GAIA test subset.
+- K=2 multi-parent crossover memory meta-evolution workflow.
+- Full evaluation pipeline for three hybrid evolved memory systems on the same GAIA subset.
 
 All memory systems are fully evaluated on GAIA subset and the result is in [RESULTS.md](RESULTS.md).
 
