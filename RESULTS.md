@@ -33,4 +33,4 @@ Each directory contains `1.json`–`20.json` (per-task trajectories), `report.tx
 
 - **Parents**: Agent-KB + Voyager (K=2 crossover)
 - **Evolution pool**: GAIA validation tasks 21–40
-- **Hold-out**: tasks 1–20 (this table)
+- **Evaluation**: GAIA subset tasks 1–20 

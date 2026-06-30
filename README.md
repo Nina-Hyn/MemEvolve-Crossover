@@ -1,20 +1,24 @@
 # MemEvolve-Crossover
 
-This repository contains the complete reproducible code for the lab report **Memory Systems that Evolve**.
+## Introduction
+
+This repository provides full reproducible code for the online assessment project **Memory Systems that Evolve**.
+
+It supports end-to-end evaluation of three baseline memory systems (Agent-KB, Cerebra, Voyager) on a fixed 20-task GAIA subset.
 
 Built upon the open-source MemEvolve framework, this work extends the original single-parent memory meta-evolution pipeline to support multi-parent crossover (K=2).
-I hybridize the Agent-KB and Voyager to generate three novel hybrid memory variants, with Echo as the optimal evolved architecture.
-All memory systems are fully evaluated on GAIA subset and the result is in [RESULTS.md](RESULTS.md).
 
-**Best evolved system (Echo)**: 80% accuracy, ~30% lower token cost, sole Level-3 success on Task 11.
+I hybridize the Agent-KB and Voyager to generate three novel hybrid memory variants, with Echo as the optimal evolved architecture.
+
+All memory systems are fully evaluated on GAIA subset and the result is in [RESULTS.md](RESULTS.md).
 
 
 ## Repository layout
 
 ```
 MemEvolve-Crossover/
-├── evolve_k2_cli.py              # K=2 evolution entry
-├── run_flash_searcher_mm_gaia.py # GAIA evaluation with memory providers
+├── evolve_k2_cli.py               # K=2 evolution entry
+├── run_flash_searcher_mm_gaia.py  # GAIA evaluation with memory providers
 ├── MemEvolveK2/                   # Dual-parent crossover implementation
 ├── MemEvolve/                     # Original evolution pipeline (inherited)
 ├── EvolveLab/                     # Memory providers (baselines + evolved)
@@ -153,7 +157,7 @@ Available evolved providers: `pathfinder`, `adaptive_trajectory_knowledge`, `ech
 
 | Split | Task indices | Purpose |
 |-------|--------------|---------|
-| Hold-out | 1–20 | Final evaluation (baselines + evolved systems) |
+| Evaluation | 1–20 | Final evaluation (baselines + evolved systems) |
 | Evolution pool | 21–40 | Base trajectories + K=2 crossover generation |
 
 
