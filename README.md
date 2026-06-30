@@ -1,17 +1,12 @@
-# MemEvolve-Crossover
-
 ## Introduction
 
-This repository provides full reproducible code for the online assessment project **Memory Systems that Evolve**.
-
-It supports end-to-end evaluation of three baseline memory systems (Agent-KB, Cerebra, Voyager) on a fixed 20-task GAIA subset.
-
-Built upon the open-source MemEvolve framework, this work extends the original single-parent memory meta-evolution pipeline to support multi-parent crossover (K=2).
-
-I hybridize the Agent-KB and Voyager to generate three novel hybrid memory variants, with Echo as the optimal evolved architecture.
+This repository is built upon the open-source MemEvolve framework, developed for the AI online assessment project Memory Systems that Evolve.
+It mainly contains three core functionalities as listed below:
+- Benchmark evaluation for Agent-KB, Cerebra and Voyager on the 20-sample GAIA test subset
+- K=2 multi-parent crossover memory meta-evolution workflow
+- Full evaluation pipeline for three hybrid evolved memory systems on the same GAIA subset
 
 All memory systems are fully evaluated on GAIA subset and the result is in [RESULTS.md](RESULTS.md).
-
 
 ## Repository layout
 
