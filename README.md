@@ -1,12 +1,12 @@
 # MemEvolve-Crossover
 
-K=2 dual-parent memory crossover for LLM agents, built on [Flash-Searcher](https://github.com/OPPO-PersonalAI/Flash-Searcher) and MemEvolve (EvolveLab).
+This repository contains the complete reproducible code for the lab report Memory Systems that Evolve.
+Built upon the open-source MemEvolve framework, this work extends the original single-parent memory meta-evolution pipeline to support multi-parent crossover (K=2).
+I hybridize the Agent-KB and Voyager to generate three novel hybrid memory variants, with Echo as the optimal evolved architecture.
+All memory systems are fully evaluated on GAIA subset and the result is in [RESULTS.md](RESULTS.md).
 
-I extend single-parent MemEvolve ($K{=}1$) to **Top-$K$ parent crossover** ($K{>}1$), using **Agent-KB** and **Voyager** as dual parents. A single evolution round on GAIA validation tasks 21–40 yields three hybrid memory systems; hold-out evaluation on tasks 1–20 is in [RESULTS.md](RESULTS.md).
+**Best evolved system (Echo)**: 80% accuracy, ~30% lower token cost, sole Level-3 success on Task 11.
 
-**Best evolved system (Echo-Base)**: 80% accuracy (matches best baselines), ~30% lower token cost, sole Level-3 success on Task 11.
-
----
 
 ## Repository layout
 
@@ -27,7 +27,6 @@ MemEvolve-Crossover/
 └── .env.example
 ```
 
----
 
 ## 1. Environment setup
 
@@ -48,11 +47,10 @@ cp .env.example .env
 Required keys:
 - `OPENAI_API_KEY` + `OPENAI_API_BASE` (I used DeepSeek: `https://api.deepseek.com`)
 - `SERPER_API_KEY` ([serper.dev](https://serper.dev/))
-- `WEB_ACCESS_PROVIDER=crawl4ai` (no extra key) **or** `JINA_API_KEY`
+- `WEB_ACCESS_PROVIDER=crawl4ai`**or** `JINA_API_KEY`
 
----
 
-## 2. View pre-computed results (no API calls)
+## 2. View pre-computed results 
 
 ```bash
 cat RESULTS.md
@@ -60,9 +58,8 @@ cat gaia_output/holdout_k2_evolved_20260630_083152/echo_base/report.txt
 ls gaia_output/holdout_k2_evolved_20260630_083152/echo_base/{1..20}.json
 ```
 
----
 
-## 3. Re-run baseline evaluation (tasks 1–20)
+## 3. Re-run baseline evaluation
 
 ```bash
 # Agent-KB
@@ -96,9 +93,8 @@ python run_flash_searcher_mm_gaia.py \
   --concurrency 1
 ```
 
----
 
-## 4. Re-run K=2 evolution (tasks 21–40)
+## 4. Re-run K=2 evolution
 
 ```bash
 python evolve_k2_cli.py auto-evolve gaia \
@@ -129,9 +125,8 @@ python evolve_k2_cli.py create --work-dir ./memevolve_k2_work/round_00
 python evolve_k2_cli.py validate --work-dir ./memevolve_k2_work/round_00 --dataset gaia
 ```
 
----
 
-## 5. Re-run hold-out evaluation (evolved systems, tasks 1–20)
+## 5. Re-run evaluation of evolved systems
 
 ```bash
 bash scripts/run_holdout_eval_k2.sh
@@ -153,7 +148,6 @@ python run_flash_searcher_mm_gaia.py \
 
 Available evolved providers: `pathfinder`, `adaptive_trajectory_knowledge`, `echo_base`.
 
----
 
 ## 6. Dataset split
 
@@ -162,15 +156,4 @@ Available evolved providers: `pathfinder`, `adaptive_trajectory_knowledge`, `ech
 | Hold-out | 1–20 | Final evaluation (baselines + evolved systems) |
 | Evolution pool | 21–40 | Base trajectories + K=2 crossover generation |
 
----
 
-## Citation
-
-```bibtex
-@article{qin2025flash,
-  title={Flash-Searcher: Fast and Effective Web Agents via DAG-Based Parallel Execution},
-  author={Qin, Tianrui and Chen, Qianben and Wang, Sinuo and others},
-  journal={arXiv preprint arXiv:2509.25301},
-  year={2025}
-}
-```
