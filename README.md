@@ -2,7 +2,7 @@
 
 K=2 dual-parent memory crossover for LLM agents, built on [Flash-Searcher](https://github.com/OPPO-PersonalAI/Flash-Searcher) and MemEvolve (EvolveLab).
 
-We extend single-parent MemEvolve ($K{=}1$) to **Top-$K$ parent crossover** ($K{>}1$), using **Agent-KB** and **Voyager** as dual parents. A single evolution round on GAIA validation tasks 21–40 yields three hybrid memory systems; hold-out evaluation on tasks 1–20 is in [RESULTS.md](RESULTS.md).
+I extend single-parent MemEvolve ($K{=}1$) to **Top-$K$ parent crossover** ($K{>}1$), using **Agent-KB** and **Voyager** as dual parents. A single evolution round on GAIA validation tasks 21–40 yields three hybrid memory systems; hold-out evaluation on tasks 1–20 is in [RESULTS.md](RESULTS.md).
 
 **Best evolved system (Echo-Base)**: 80% accuracy (matches best baselines), ~30% lower token cost, sole Level-3 success on Task 11.
 
@@ -46,7 +46,7 @@ cp .env.example .env
 ```
 
 Required keys:
-- `OPENAI_API_KEY` + `OPENAI_API_BASE` (we used DeepSeek: `https://api.deepseek.com`)
+- `OPENAI_API_KEY` + `OPENAI_API_BASE` (I used DeepSeek: `https://api.deepseek.com`)
 - `SERPER_API_KEY` ([serper.dev](https://serper.dev/))
 - `WEB_ACCESS_PROVIDER=crawl4ai` (no extra key) **or** `JINA_API_KEY`
 
