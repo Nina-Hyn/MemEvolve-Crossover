@@ -1,0 +1,236 @@
+{
+  "nodes": [
+    {
+      "id": "7e87dd2e-a0a3-4520-b782-7d377f7e4b31",
+      "node_type": "pattern",
+      "content": "Preserve source phrasing when explicitly requested; avoid over-normalization of reported values.",
+      "metadata": {
+        "category": "format_policy"
+      },
+      "created_at": "2026-06-27T20:07:30.657670",
+      "signature": "932f20bbb302ee953b55540b4c8096a0c1a7d376d5e1148efda5b643e4883c5d"
+    },
+    {
+      "id": "e301bdaf-82c9-438d-a524-5483a0b9b4a7",
+      "node_type": "pattern",
+      "content": "When progress is incomplete, consider alternate access methods and define clear completion criteria.",
+      "metadata": {
+        "category": "continuation_tactics"
+      },
+      "created_at": "2026-06-27T20:07:30.657690",
+      "signature": "b4eca679eca76f5a41eb4d164b4b0bfa7b684de510b9b11ccdde0d9fe35de61d"
+    },
+    {
+      "id": "2b43b192-1e6d-441e-9839-61040cfa42f7",
+      "node_type": "checklist",
+      "content": "Verify target entity matches question requirements before finalizing answer.",
+      "metadata": {
+        "category": "final_check"
+      },
+      "created_at": "2026-06-27T20:07:30.657698",
+      "signature": "b20a201fed0903c3a22251746d045941b83c347ac00919a2a892f14152ace213"
+    },
+    {
+      "id": "e7dfc580-892d-46eb-887e-ee6a0eddb225",
+      "node_type": "playbook",
+      "content": "For sports data: use site-restricted search, handle pagination, validate completeness.",
+      "metadata": {
+        "domain": "sports"
+      },
+      "created_at": "2026-06-27T20:07:30.657706",
+      "signature": "a652ad3f509290344be131933e9d8f216db12bd12b2e1ab21f2fd94ab5e8cc43"
+    },
+    {
+      "id": "61ae8e69-8431-4fb4-8ce1-482c6f0d8872",
+      "node_type": "playbook",
+      "content": "For author attribution: check visible byline first; if absent, consider organizational attribution.",
+      "metadata": {
+        "domain": "content_sites"
+      },
+      "created_at": "2026-06-27T20:07:30.657712",
+      "signature": "722f1f3823d67cb6d3003e8f308199d689d4296fddd49ca5d5682b8f713703f7"
+    },
+    {
+      "id": "fb47c959-42a8-4102-8db0-ab5f2f34794e",
+      "node_type": "playbook",
+      "content": "For archived content: try multiple access paths if one fails.",
+      "metadata": {
+        "domain": "archives"
+      },
+      "created_at": "2026-06-27T20:07:30.657719",
+      "signature": "8c6f8975e2155792870137706a9b603f89408da7c5d7cd14d369378330e69056"
+    },
+    {
+      "id": "384562f3-8d5e-4a02-9609-81c5d110d036",
+      "node_type": "playbook",
+      "content": "For aggregated data: confirm correct entity before extracting details.",
+      "metadata": {
+        "domain": "aggregators"
+      },
+      "created_at": "2026-06-27T20:07:30.657726",
+      "signature": "d7382b1289cc7d4a9e17db6c99507e71840c68df397f47491a32c02eb37f299e"
+    },
+    {
+      "id": "eadeab23-2868-43c0-9372-ba5e1ff45bef",
+      "node_type": "success",
+      "content": "Execution for: A paper about AI regulation that was originally submitted to arXiv.org in June 2022 shows a figure w",
+      "metadata": {
+        "source_query": "A paper about AI regulation that was originally submitted to arXiv.org in June 2022 shows a figure with three axes, where each axis has a label word at both ends. Which of these words is used to describe a type of society in a Physics and Society article submitted to arXiv.org on August 11, 2016?",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T20:09:47.692666",
+      "signature": "3158660c6b386e8b5d20b3188cb6d9a1081c1e566309bb5f977bcb5134e78daa"
+    },
+    {
+      "id": "a3bb7005-2a58-4e0c-97d8-c014097a158d",
+      "node_type": "success",
+      "content": "Execution for: I’m researching species that became invasive after people who kept them as pets released them. There",
+      "metadata": {
+        "source_query": "I’m researching species that became invasive after people who kept them as pets released them. There’s a certain species of fish that was popularized as a pet by being the main character of the movie Finding Nemo. According to the USGS, where was this fish found as a nonnative species, before the year 2020? I need the answer formatted as the five-digit zip codes of the places the species was found, separated by commas if there is more than one place.",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T20:11:15.231406",
+      "signature": "c8ccd4a19f02b56b28f6ab7df9f8a3b045f6e21dd79a9b83aa9722aaa478d691"
+    },
+    {
+      "id": "f0626680-6cf9-4413-bcd0-7b3f9a535444",
+      "node_type": "success",
+      "content": "Execution for: In Unlambda, what exact charcter or text needs to be added to correct the following code to output \"",
+      "metadata": {
+        "source_query": "In Unlambda, what exact charcter or text needs to be added to correct the following code to output \"For penguins\"? If what is needed is a character, answer with the name of the character. If there are different names for the character, use the shortest. The text location is not needed. Code:\n\n`r```````````.F.o.r. .p.e.n.g.u.i.n.si",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T20:26:03.569899",
+      "signature": "56b398ba2aa6d536daf5ef797564a8fb609c21f84a4b011e49dd6426db826174"
+    },
+    {
+      "id": "1ccd44f7-b06c-43d1-9c73-fe6d38aa7290",
+      "node_type": "success",
+      "content": "Execution for: The attached spreadsheet shows the inventory for a movie and video game rental store in Seattle, Was",
+      "metadata": {
+        "source_query": "The attached spreadsheet shows the inventory for a movie and video game rental store in Seattle, Washington. What is the title of the oldest Blu-Ray recorded in this spreadsheet? Return it as appearing in the spreadsheet.",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T20:28:12.991034",
+      "signature": "c765348850246a18bfd6de1097cb70b38647f05447114530650b6e715bcef739"
+    },
+    {
+      "id": "e0e64d63-b39f-4e85-bfd7-33647e794cbd",
+      "node_type": "success",
+      "content": "Execution for: How many studio albums were published by Mercedes Sosa between 2000 and 2009 (included)? You can use",
+      "metadata": {
+        "source_query": "How many studio albums were published by Mercedes Sosa between 2000 and 2009 (included)? You can use the latest 2022 version of english wikipedia.",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T20:29:52.690739",
+      "signature": "7c98dfc75633a21f406f2a2fefdc98b4ac5fde73f8909daecf2015e39e6dd826"
+    },
+    {
+      "id": "82c681cb-fd6e-4010-af29-61d35772c7a8",
+      "node_type": "success",
+      "content": "Execution for: The object in the British Museum's collection with a museum number of 2012,5015.17 is the shell of a",
+      "metadata": {
+        "source_query": "The object in the British Museum's collection with a museum number of 2012,5015.17 is the shell of a particular mollusk species. According to the abstract of a research article published in Science Advances in 2021, beads made from the shells of this species were found that are at least how many thousands of years old?",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T20:31:15.185977",
+      "signature": "1146e2eeb2a1a28876e9961c5134e163c0dc2ef37604901b0f900a8743a8098e"
+    },
+    {
+      "id": "db937c93-9823-4931-a969-40979eb3d401",
+      "node_type": "success",
+      "content": "Execution for: According to github, when was Regression added to the oldest closed numpy.polynomial issue that has ",
+      "metadata": {
+        "source_query": "According to github, when was Regression added to the oldest closed numpy.polynomial issue that has the Regression label in MM/DD/YY?",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T20:43:28.143789",
+      "signature": "ccc0687aed97d5f24487070c20d94b2bd5ac6585d0d3d2591a57f596b296ab21"
+    },
+    {
+      "id": "195c25fb-19b7-4482-b872-f86f0767c280",
+      "node_type": "success",
+      "content": "Execution for: Here's a fun riddle that I think you'll enjoy.\n\nYou have been selected to play the final round of th",
+      "metadata": {
+        "source_query": "Here's a fun riddle that I think you'll enjoy.\n\nYou have been selected to play the final round of the hit new game show \"Pick That Ping-Pong\". In this round, you will be competing for a large cash prize. Your job will be to pick one of several different numbered ping-pong balls, and then the game will commence. The host describes how the game works.\n\nA device consisting of a winding clear ramp and a series of pistons controls the outcome of the game. The ramp feeds balls onto a platform. The platform has room for three ping-pong balls at a time. The three balls on the platform are each aligned with one of three pistons. At each stage of the game, one of the three pistons will randomly fire, ejecting the ball it strikes. If the piston ejects the ball in the first position on the platform the balls in the second and third position on the platform each advance one space, and the next ball on the ramp advances to the third position. If the piston ejects the ball in the second position, the ball in the first position is released and rolls away, the ball in the third position advances two spaces to occupy the first position, and the next two balls on the ramp advance to occupy the second and third positions on the platform. If the piston ejects the ball in the third position, the ball in the first position is released and rolls away, the ball in the second position advances one space to occupy the first position, and the next two balls on the ramp advance to occupy the second and third positions on the platform.\n\nThe ramp begins with 100 numbered ping-pong balls, arranged in ascending order from 1 to 100. The host activates the machine and the first three balls, numbered 1, 2, and 3, advance to the platform. Before the random firing of the pistons begins, you are asked which of the 100 balls you would like to pick. If your pick is ejected by one of the pistons, you win the grand prize, $10,000.\n\nWhich ball should you choose to maximize your odds of winning the big prize? Please provide your answer as the number of the ball selected.",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T20:45:53.489123",
+      "signature": "2a8a7b00663714406c2b1d4ab14682f888d98077e1756f198ecaf3b7b325d5dd"
+    },
+    {
+      "id": "cabd8603-8bf5-45be-8974-7225347a56ce",
+      "node_type": "success",
+      "content": "Execution for: Using the Biopython library in Python, parse the PDB file of the protein identified by the PDB ID 5w",
+      "metadata": {
+        "source_query": "Using the Biopython library in Python, parse the PDB file of the protein identified by the PDB ID 5wb7 from the RCSB Protein Data Bank. Calculate the distance between the first and second atoms as they are listed in the PDB file. Report the answer in Angstroms, rounded to the nearest picometer.",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T20:57:48.695524",
+      "signature": "ea4ed827920ec6c51538b666b1a140c696b23d5f3134d1e746df2c6e1cb06143"
+    },
+    {
+      "id": "b9de2d37-d9d2-4e70-bb9d-bf5e16541e9f",
+      "node_type": "success",
+      "content": "Execution for: What are the EC numbers of the two most commonly used chemicals for the virus testing method in the ",
+      "metadata": {
+        "source_query": "What are the EC numbers of the two most commonly used chemicals for the virus testing method in the paper about SPFMV and SPCSV in the Pearl Of Africa from 2016? Return the semicolon-separated numbers in the order of the alphabetized chemicals.",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T21:05:48.118711",
+      "signature": "91ae2e67f37a78417b62f18d8b362e51ce18cd3c6db0188591f44cb3bfa9a793"
+    },
+    {
+      "id": "ac6bcbd5-b3b8-4e24-8d87-3dd2512654bc",
+      "node_type": "success",
+      "content": "Execution for: In April of 1977, who was the Prime Minister of the first place mentioned by name in the Book of Est",
+      "metadata": {
+        "source_query": "In April of 1977, who was the Prime Minister of the first place mentioned by name in the Book of Esther (in the New International Version)?",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T21:07:19.503265",
+      "signature": "8ef6d8d366cf4c9b3fe7708e3ecee990a8c7bd63b5abefdf30b2d4d1e15f4ce5"
+    },
+    {
+      "id": "e882d77b-01b3-47b4-abe1-1d970c109a64",
+      "node_type": "success",
+      "content": "Execution for: Use density measures from the chemistry materials licensed by Marisa Alviar-Agnew & Henry Agnew unde",
+      "metadata": {
+        "source_query": "Use density measures from the chemistry materials licensed by Marisa Alviar-Agnew & Henry Agnew under the CK-12 license in LibreText's Introductory Chemistry materials as compiled 08/21/2023.\n\nI have a gallon of honey and a gallon of mayonnaise at 25C. I remove one cup of honey at a time from the gallon of honey. How many times will I need to remove a cup to have the honey weigh less than the mayonaise? Assume the containers themselves weigh the same.",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T21:16:15.944907",
+      "signature": "e7c98440e601546d04b84ef067bd20e7c7eb4d416b288172232224dae92dac8a"
+    },
+    {
+      "id": "48240d1e-1986-4636-8d56-95001da3a10c",
+      "node_type": "success",
+      "content": "Execution for: What was the volume in m^3 of the fish bag that was calculated in the University of Leicester paper ",
+      "metadata": {
+        "source_query": "What was the volume in m^3 of the fish bag that was calculated in the University of Leicester paper \"Can Hiccup Supply Enough Fish to Maintain a Dragon’s Diet?\"",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T21:19:15.989654",
+      "signature": "3abb70eb8ddeeba1689d09b0d6aefb0253641eb5b4c0793c138fe6f3fbbe778d"
+    },
+    {
+      "id": "7f487458-bcf4-43fa-86f3-34468d0136eb",
+      "node_type": "success",
+      "content": "Execution for: In the video https://www.youtube.com/watch?v=L1vXCYZAYYM, what is the highest number of bird species",
+      "metadata": {
+        "source_query": "In the video https://www.youtube.com/watch?v=L1vXCYZAYYM, what is the highest number of bird species to be on camera simultaneously?",
+        "outcome": "success"
+      },
+      "created_at": "2026-06-27T21:34:03.123759",
+      "signature": "9bde43e663b7971fcf0a90ab7f044dda856dc21f8830ae986ab3026c777c4b92"
+    }
+  ],
+  "edges": [],
+  "tools": [],
+  "metadata": {
+    "total_nodes": 21,
+    "total_edges": 0,
+    "total_tools": 0,
+    "last_updated": "2026-06-27T21:34:03.227766"
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "agent_result": "142",
+  "judgement": "correct",
+  "task_id": "3627a8be-a77f-41bb-b807-7e1bd4c0ebdf",
+  "item_index": 8,
+  "level": 2,
+  "question": "The object in the British Museum's collection with a museum number of 2012,5015.17 is the shell of a particular mollusk species. According to the abstract of a research article published in Science Advances in 2021, beads made from the shells of this species were found that are at least how many thousands of years old?",
+  "full_query": "The object in the British Museum's collection with a museum number of 2012,5015.17 is the shell of a particular mollusk species. According to the abstract of a research article published in Science Advances in 2021, beads made from the shells of this species were found that are at least how many thousands of years old?",
+  "golden_answer": "142",
+  "status": "success",
+  "agent_trajectory": [
+    {
+      "name": "plan",
+      "value": "## Goal 1: Identify the mollusk species of British Museum object 2012,5015.17\n- Path 1.1: Direct crawl of British Museum collection page\n  - Success: Successfully retrieve the species name from the museum’s online catalog (e.g., scientific name, common name, or family).\n- Path 1.2: Web search for the museum number and shell\n  - Success: Find a reliable source (museum database, scientific article, or natural history site) that explicitly lists the species for object 2012,5015.17.\n- Path 1.3: Search for “2012,5015.17 mollusk” or “2012,5015.17 shell” and cross-reference with museum records\n  - Success: Confirmed species name from at least two independent sources (e.g., museum site and a research database).\n\n## Goal 2: Locate the 2021 Science Advances article about beads made from shells of the identified species\n- Path 2.1: After species is known, search “[species name] beads Science Advances 2021”\n  - Success: Find the exact article title and DOI, with accessible abstract or full text.\n- Path 2.2: Search general terms “Science Advances 2021 shell beads” and filter by species name once identified\n  - Success: Identify the correct article among the results (e.g., by matching species or museum number context).\n- Path 2.3: Search “Science Advances 2021 beads” plus “British Museum” or “2012,5015.17” to locate article directly\n  - Success: Retrieve article that mentions the object or species, confirming relevance.\n\n## Goal 3: Extract the minimum age (in thousands of years) of the beads from the article’s abstract\n- Path 3.1: Crawl the article webpage and extract the abstract text, then parse for phrases like “at least X thousand years old”\n  - Success: Recorded the exact numerical age (e.g., “at least 40,000 years old”).\n- Path 3.2: Search for snippet of abstract using “beads from [species] shells” + “at least” + “thousand years” in Google Scholar or Science Advances\n  - Success: Obtain the precise age statement from a trustworthy preview or the abstract itself.\n- Path 3.3: If abstract is behind paywall, use alternative sources (e.g., PubMed, institutional repository) to access the abstract and extract the age\n  - Success: Verified age value from the official abstract, regardless of access method.",
+      "think": "",
+      "cot_think": "We need to decompose the task. The task: find the shell of a mollusk species in British Museum with museum number 2012,5015.17. Then find a research article published in Science Advances in 2021 about beads made from shells of that species, and according to the abstract, beads are at least how many thousands of years old. So we need to identify the species, then find the article, then extract the age.\n\nWe need to plan goals. Possible goals: 1) Identify the species from the museum number. 2) Find the Science Advances 2021 article about beads from that species. 3) Extract the age from the abstract. But we can parallelize: Goal 1: find species information. Goal 2: search for Science Advances article. But we need the species to refine search, so maybe Goal 1 first. However, we can also search broadly for \"Science Advances 2021 beads shell\" and then identify species later. But we need the specific species from museum.\n\nBetter: Goal 1: Obtain the species name of British Museum object 2012,5015.17. Multiple paths: a) Crawl British Museum collection page with that number. b) Search web for \"2012,5015.17 British Museum\" etc. c) Possibly use Wikipedia or databases. d) Search for \"shell 2012,5015.17\" etc.\n\nGoal 2: Find the Science Advances 2021 article that mentions beads made from shells of that species. Paths: a) Once species known, search \"Science Advances 2021 [species] beads\". b) Search \"Science Advances 2021 shell beads\" and look for species. c) Search \"beads from shells of [species] Science Advances 2021\".\n\nGoal 3: Extract the age from the abstract. Paths: a) Crawl the article page to get abstract. b) Search for abstract text. c) Look for \"at least X thousand years old\" etc.\n\nBut note: Goals can be parallel if we have enough info. We can start Goal 1 and also do a broad search for Science Advances article that might mention a British Museum number or something. But likely species-specific.\n\nI'll design 3 goals with multiple paths.\n\nGoal 1: Identify species of British Museum object 2012,5015.17.\n\nPaths:\n- Path 1.1: Crawl the British Museum collection page directly using URL pattern: https://www.britishmuseum.org/collection/object/... Might need to find URL. Use search \"British Museum 2012,5015.17\" to get URL.\n- Path 1.2: Search web for \"2012,5015.17 mollusk shell\" to get species name.\n- Path 1.3: Search for \"British Museum 2012,5015.17 shell\" and then crawl result pages.\n\nGoal 2: Find Science Advances 2021 article about beads from that species.\n\nPaths:\n- Path 2.1: After species identified, search \"Science Advances 2021 [species] beads\" and look for abstract.\n- Path 2.2: Search \"Science Advances 2021 shell beads from [species]\" or \"beads made from [species] shells\".\n- Path 2.3: If species not yet known from Goal 1, search \"Science Advances 2021 beads from Conus\" or something generic, but better to wait. But we can start parallel search for \"Science Advances 2021 beads shell\" and then later filter by species.\n\nHowever, planning must be parallel execution. We can have a goal that doesn't require species first, but it's risky. I'll make Goal 2 dependent on species, but we can attempt generic searches in parallel.\n\nGoal 3: Extract the age from the abstract.\n\nPaths:\n- Path 3.1: Crawl the article page and extract the abstract.\n- Path 3.2: Search for specific phrase \"at least * thousand years old\" from article snippet.\n- Path 3.3: Use PubMed or Google Scholar snippet.\n\nBut we need to ensure paths are independent. We can combine Goal 2 and 3 by crawling article.\n\nBetter structure: Goal 1: Identify species. Goal 2: Find article details and age. Paths for Goal 2 can include multiple ways to access the article.\n\nI'll produce plan with 3 goals, each with 2-3 paths.\n\nNow write output.",
+      "memory_guidance": "Below is the trajectory from a similar task:\nStep 0: Started with plan to find Nature article count.\nStep 1: Searched \"Nature journal number of articles 2020\".\nStep 2: Searched \"Nature 2020 articles published count\".\nStep 3: Crawled Nature 2020 archive page; found total 3621 items.\nStep 4: Filtered by Article type; found 1002 articles.\nStep 5: Calculated 1002 × 0.04 = 40.08, rounded up to 41.\nStep 6: Called final_answer(\"41\").\n\nConclusion: Success; computed 41 incorrect papers by multiplying Nature’s 1002 articles by p-value 0.04 and rounding up.\nEnd of similar task trajectory."
+    },
+    {
+      "name": "action",
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "arguments": {
+            "query": "British Museum 2012,5015.17 shell species"
+          }
+        },
+        {
+          "name": "web_search",
+          "arguments": {
+            "query": "Science Advances 2021 beads British Museum 2012,5015.17"
+          }
+        },
+        {
+          "name": "web_search",
+          "arguments": {
+            "query": "shell beads at least thousand years old Science Advances 2021"
+          }
+        }
+      ],
+      "obs": "Results for tool call 'web_search' with arguments '{'query': 'British Museum 2012,5015.17 shell species'}':\n1. [animal remains | British Museum](https://www.britishmuseum.org/collection/object/G_2012-5015-17)\nSource: Unknown source\n   Museum number 2012,5015.17 Description Shell of a marine gastropod mollusc of the Mediterranean 'Nassa gibbosula' species. shell Dimensions Height: 0.90 ...\n\n2. [animal remains | British Museum](https://www.britishmuseum.org/collection/object/G_2012-5016-11?selectedImageId=1191703001)\nSource: Unknown source\n   Shell of a marine gastropod mollusc of the Semicassis undulatum subspecies. Same shell as 2012,5015.5, Now known as Semicassis undulatum\n\n3. [animal remains | British Museum](https://www.britishmuseum.org/collection/object/G_2012-5016-36)\nSource: Unknown source\n   Museum number: 2012,5016.36 ; Description: Shell of a marine gastropod mollusc of the Bittium genus. ; Production date: 7thC(late) BC-(late)7thC AD ; Materials ...\n\n4. [animal remains | British Museum](https://www.britishmuseum.org/collection/object/G_2012-5015-7)\nSource: Unknown source\n   Museum number: 2012,5015.7 ; Description: Shell of the Mediterranean marine 'Trochus Turbinatus' gastropod mollusc. ; Production date: 7thC(late) BC-(late)7thC AD.\n\n5. [Marine Bivalve Shells of the British Isles - Collections: Natural History](https://naturalhistory.museumwales.ac.uk/britishbivalves/)\nSource: Unknown source\n   This site provides taxonomic information on every bivalve species found, and that may possibly be found, in British waters to a depth of 5000m.\n\nResults for tool call 'web_search' with arguments '{'query': 'Science Advances 2021 beads British Museum 2012,5015.17'}':\n1. [animal remains | British Museum](https://www.britishmuseum.org/collection/object/G_2012-5015-17)\nSource: Unknown source\n   Object Type: animal remains ; Museum number: 2012,5015.17 ; Description: Shell of a marine gastropod mollusc of the Mediterranean 'Nassa gibbosula' species.\n\n2. [Archaeologists find the oldest-known shell beads](https://leakeyfoundation.org/archaeologists-find-the-oldest-known-shell-beads/)\nSource: Unknown source\n   An international team of archaeologists recovered the 33 beads, between 2014 and 2018, from a cave in western Morocco.\n\n3. [The world's oldest-known beads are between 142000 ... - Instagram](https://www.instagram.com/p/DOMW6O7kxTt/?hl=en)\nDate published: Sep 4, 2025\nSource: Unknown source\n   The world's oldest-known beads are between 142,000 and 150,000 years old, and you're looking at them! These beads are pierced sea snail ...\n\n4. [OpenResearcher/web-bench · Datasets at Hugging Face](https://huggingface.co/datasets/OpenResearcher/web-bench)\nDate published: Mar 17, 2026\nSource: Unknown source\n   The object in the British Museum's collection with a museum number of 2012,5015.17 is the shell of a particular mollusk species. According ...\n\n5. [Shells may represent oldest known beads - Science News](https://www.sciencenews.org/article/shells-may-represent-oldest-known-beads)\nDate published: Jul 3, 2006\nSource: Unknown source\n   Researchers have identified three perforated shells dating to around 100000 years ago as beads, making these finds the oldest known examples ...\n\nResults for tool call 'web_search' with arguments '{'query': 'shell beads at least thousand years old Science Advances 2021'}':\n1. [Archaeologists find the oldest-known shell beads](https://leakeyfoundation.org/archaeologists-find-the-oldest-known-shell-beads/)\nDate published: Oct 6, 2021\nSource: Unknown source\n   An international team of archaeologists recovered the 33 beads, between 2014 and 2018, from a cave in western Morocco.\n\n2. [150,000-year-old shell jewelry found in Morocco - Facebook](https://www.facebook.com/groups/archeologyandcivilizations/posts/5428435290583284/)\nDate published: Sep 8, 2022\nSource: Unknown source\n   From a cave in western Morocco shell beads were recovered, determined to be between 142,000 and 150,000 years old. The beads were made from ...\n\n3. [Ostrich eggshell beads reveal 50,000-year-old social network in Africa](https://www.nature.com/articles/s41586-021-04227-2)\nDate published: Dec 20, 2021\nSource: Unknown source\n   Ostrich eggshell (OES) beads are the oldest fully manufactured beads and could be key to revealing Late Pleistocene social dynamics in Africa.\n\n4. [Archaeologists Just Discovered the World's Oldest Jewelry](https://news.artnet.com/art-world/worlds-oldest-jewelry-morocco-2037635)\nDate published: Nov 19, 2021\nSource: Unknown source\n   Archaeologists have discovered the world's oldest jewelry—33 beads made from snail shells 150000 years ago—in Morocco's Bizmoune Cave.\n\n5. [World's Oldest Manufactured Beads Are Older Than ... - ScienceDaily](https://www.sciencedaily.com/releases/2009/05/090505163021.htm)\nDate published: May 7, 2009\nSource: Unknown source\n   Sep. 22, 2021 — Shell beads found in a cave in Morocco are at least 142,000 years old. The archaeologists who found them say they're the ...",
+      "think": "We need to advance all three goals simultaneously by executing their first paths in parallel. For Goal 1, we search for the British Museum object's species. For Goal 2, we search for the relevant Science Advances article using the museum number as context. For Goal 3, we search for the age information directly. These three web searches are independent and can be executed at the same time.",
+      "cot_think": null,
+      "memory_guidance": null
+    },
+    {
+      "name": "action",
+      "tool_calls": [
+        {
+          "name": "crawl_page",
+          "arguments": {
+            "url": "https://www.britishmuseum.org/collection/object/G_2012-5015-17",
+            "query": "species of the shell"
+          }
+        },
+        {
+          "name": "web_search",
+          "arguments": {
+            "query": "Science Advances 2021 Nassa gibbosula beads"
+          }
+        },
+        {
+          "name": "web_search",
+          "arguments": {
+            "query": "142,000 year old shell beads Science Advances 2021 abstract"
+          }
+        }
+      ],
+      "obs": "Results for tool call 'crawl_page' with arguments '{'url': 'https://www.britishmuseum.org/collection/object/G_2012-5015-17', 'query': 'species of the shell'}':\nNo relevant information\n\nResults for tool call 'web_search' with arguments '{'query': 'Science Advances 2021 Nassa gibbosula beads'}':\n1. [Early middle stone age personal ornaments from Bizmoune Cave ...](https://experts.arizona.edu/en/publications/early-middle-stone-age-personal-ornaments-from-bizmoune-cave-essa/)\nSource: Unknown source\n   In: Science Advances. 2021 ; Vol. 7, No. 39. ... N2 - Ornaments such as beads are among the earliest signs of symbolic behavior among human ancestors. Their ...\n\n2. [Early Middle Stone Age personal ornaments from Bizmoune Cave ...](https://pmc.ncbi.nlm.nih.gov/articles/PMC8457661/)\nDate published: Sep 22, 2021\nSource: Unknown source\n   Shell beads from Bizmoune Cave (Morocco) show the early appearance and continuity of symbolic behavior among early Homo sapiens.\n\n3. [Nassarius shells: Preferred beads of the Palaeolithic - ResearchGate](https://www.researchgate.net/publication/282551332_Nassarius_shells_Preferred_beads_of_the_Palaeolithic)\nDate published: Apr 22, 2019\nSource: Unknown source\n   Research has shown that in Middle Palaeolithic sites in both Africa and Eurasia, members of the genus Nassarius were the preferred mollusks selected for use as ...\n\n4. [Nassa Gibbosula Beads Science Advances 2021 - Instagram](https://www.instagram.com/popular/nassa-gibbosula-beads-science-advances-2021/)\nSource: Unknown source\n   Watch short videos about nassa gibbosula beads science advances 2021 from people around the world. Science Advances 2021 Beads Nassa Gibbosula, Science ...\n\n5. [Archaeologists Just Discovered the World's Oldest Jewelry](https://news.artnet.com/art-world/worlds-oldest-jewelry-morocco-2037635)\nDate published: Nov 19, 2021\nSource: Unknown source\n   Archaeologists have discovered the world's oldest jewelry—33 beads made from snail shells 150000 years ago—in Morocco's Bizmoune Cave.\n\nResults for tool call 'web_search' with arguments '{'query': '142,000 year old shell beads Science Advances 2021 abstract'}':\n1. [Early Middle Stone Age personal ornaments from Bizmoune Cave ...](https://www.science.org/doi/10.1126/sciadv.abi8620)\nDate published: Sep 22, 2021\nSource: Unknown source\n   Many of the beads come as deposits dating to ≥142 thousand years, making them the oldest shell beads yet recovered. They extend the dates for ...\n\n2. [Archaeologists find the oldest-known shell beads](https://leakeyfoundation.org/archaeologists-find-the-oldest-known-shell-beads/)\nDate published: Oct 6, 2021\nSource: Unknown source\n   An international team of archaeologists recovered the 33 beads, between 2014 and 2018, from a cave in western Morocco.\n\n3. [Ancient shell beads from Western Morocco are 150,000 years old](https://www.facebook.com/groups/1331722814218106/posts/1871050356952013/)\nDate published: Nov 3, 2025\nSource: Unknown source\n   The oldest known jewelry, made from perforated seashells, was found in Bizmoune Cave, Morocco, dating back between 142,000 and 150,000 years.\n\n4. [Archaeologists Just Discovered the World's Oldest Jewelry](https://news.artnet.com/art-world/worlds-oldest-jewelry-morocco-2037635)\nDate published: Nov 19, 2021\nSource: Unknown source\n   In a cave in the western Morocco desert, archaeologists have discovered the world's oldest jewelry: a set of shell beads dated from 142,000 ...\n\n5. [150000-year-old beads found to be world's oldest form of jewelry](https://nypost.com/2021/11/26/150000-year-old-beads-are-worlds-oldest-form-of-jewelry/)\nDate published: Nov 26, 2021\nSource: Unknown source\n   Science Advances reported that excavators discovered 33 shell beads dated between 142,000 and 150,000 years old. While the beads themselves ...",
+      "think": "We have initial results indicating the species is Nassa gibbosula (or Tritia gibbosula) and that beads from that species were found in Morocco dated to at least 142,000 years old (the Leakey Foundation article). But we need to confirm the exact Science Advances 2021 abstract and the specific age statement. We should crawl the British Museum page to double-check the species, search for the exact Science Advances article, and also verify the age from reliable sources. All three goals can be advanced in parallel.",
+      "cot_think": null,
+      "memory_guidance": null
+    },
+    {
+      "name": "action",
+      "tool_calls": [
+        {
+          "name": "crawl_page",
+          "arguments": {
+            "url": "https://www.science.org/doi/10.1126/sciadv.abi8620",
+            "query": "abstract of the article: the minimum age of the beads in thousands of years"
+          }
+        }
+      ],
+      "obs": "Results for tool call 'crawl_page' with arguments '{'url': 'https://www.science.org/doi/10.1126/sciadv.abi8620', 'query': 'abstract of the article: the minimum age of the beads in thousands of years'}':\n- The abstract of the article (Science Advances, 2021, DOI: 10.1126/sciadv.abi8620) reports that the shell beads from Bizmoune Cave, Morocco, represent the earliest known examples of personal ornamentation from the Middle Stone Age of North Africa.  \n- The minimum age of these beads is approximately **142,000 years** (i.e., 142 thousand years). This age is derived from uranium‑series dating of associated carbonate crusts and optically stimulated luminescence dating of sediments.",
+      "think": "The species is confirmed as Nassa gibbosula (now often referred to as Nassarius gibbosulus). The Science Advances 2021 article is 'Early Middle Stone Age personal ornaments from Bizmoune Cave, Essaouira, Morocco' (DOI: 10.1126/sciadv.abi8620). The abstract excerpt seen from search results states 'Many of the beads come as deposits dating to ≥142 thousand years'. To be absolutely certain, I will crawl the Science Advances page to extract the exact phrasing of the abstract and confirm the minimum age in thousands of years.",
+      "cot_think": null,
+      "memory_guidance": null
+    },
+    {
+      "name": "action",
+      "tool_calls": [
+        {
+          "name": "final_answer",
+          "arguments": {
+            "answer": "142"
+          }
+        }
+      ],
+      "obs": "142",
+      "think": "The mollusk species is Nassa gibbosula (from British Museum). The relevant Science Advances 2021 article (DOI: 10.1126/sciadv.abi8620) focuses on shell beads from Bizmoune Cave. Its abstract states 'Many of the beads come as deposits dating to ≥142 thousand years', meaning at least 142 thousand years old. I will now finalize the answer.",
+      "cot_think": null,
+      "memory_guidance": null
+    }
+  ],
+  "agent_messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "New task:\nThe object in the British Museum's collection with a museum number of 2012,5015.17 is the shell of a particular mollusk species. According to the abstract of a research article published in Science Advances in 2021, beads made from the shells of this species were found that are at least how many thousands of years old?"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "————Memory System Guidance————\nBelow is the trajectory from a similar task:\nStep 0: Started with plan to find Nature article count.\nStep 1: Searched \"Nature journal number of articles 2020\".\nStep 2: Searched \"Nature 2020 articles published count\".\nStep 3: Crawled Nature 2020 archive page; found total 3621 items.\nStep 4: Filtered by Article type; found 1002 articles.\nStep 5: Calculated 1002 × 0.04 = 40.08, rounded up to 41.\nStep 6: Called final_answer(\"41\").\n\nConclusion: Success; computed 41 incorrect papers by multiplying Nature’s 1002 articles by p-value 0.04 and rounding up.\nEnd of similar task trajectory.\n————End Memory————"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, begin your planning analysis for this task!"
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "[PLAN]:\n## Goal 1: Identify the mollusk species of British Museum object 2012,5015.17\n- Path 1.1: Direct crawl of British Museum collection page\n  - Success: Successfully retrieve the species name from the museum’s online catalog (e.g., scientific name, common name, or family).\n- Path 1.2: Web search for the museum number and shell\n  - Success: Find a reliable source (museum database, scientific article, or natural history site) that explicitly lists the species for object 2012,5015.17.\n- Path 1.3: Search for “2012,5015.17 mollusk” or “2012,5015.17 shell” and cross-reference with museum records\n  - Success: Confirmed species name from at least two independent sources (e.g., museum site and a research database).\n\n## Goal 2: Locate the 2021 Science Advances article about beads made from shells of the identified species\n- Path 2.1: After species is known, search “[species name] beads Science Advances 2021”\n  - Success: Find the exact article title and DOI, with accessible abstract or full text.\n- Path 2.2: Search general terms “Science Advances 2021 shell beads” and filter by species name once identified\n  - Success: Identify the correct article among the results (e.g., by matching species or museum number context).\n- Path 2.3: Search “Science Advances 2021 beads” plus “British Museum” or “2012,5015.17” to locate article directly\n  - Success: Retrieve article that mentions the object or species, confirming relevance.\n\n## Goal 3: Extract the minimum age (in thousands of years) of the beads from the article’s abstract\n- Path 3.1: Crawl the article webpage and extract the abstract text, then parse for phrases like “at least X thousand years old”\n  - Success: Recorded the exact numerical age (e.g., “at least 40,000 years old”).\n- Path 3.2: Search for snippet of abstract using “beads from [species] shells” + “at least” + “thousand years” in Google Scholar or Science Advances\n  - Success: Obtain the precise age statement from a trustworthy preview or the abstract itself.\n- Path 3.3: If abstract is behind paywall, use alternative sources (e.g., PubMed, institutional repository) to access the abstract and extract the age\n  - Success: Verified age value from the official abstract, regardless of access method."
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Calling tools:\n{'tools': [{'name': 'web_search', 'arguments': {'query': 'British Museum 2012,5015.17 shell species'}}, {'name': 'web_search', 'arguments': {'query': 'Science Advances 2021 beads British Museum 2012,5015.17'}}, {'name': 'web_search', 'arguments': {'query': 'shell beads at least thousand years old Science Advances 2021'}}]}"
+        }
+      ]
+    },
+    {
+      "role": "tool-response",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tool calling observation:\nResults for tool call 'web_search' with arguments '{'query': 'British Museum 2012,5015.17 shell species'}':\n1. [animal remains | British Museum](https://www.britishmuseum.org/collection/object/G_2012-5015-17)\nSource: Unknown source\n   Museum number 2012,5015.17 Description Shell of a marine gastropod mollusc of the Mediterranean 'Nassa gibbosula' species. shell Dimensions Height: 0.90 ...\n\n2. [animal remains | British Museum](https://www.britishmuseum.org/collection/object/G_2012-5016-11?selectedImageId=1191703001)\nSource: Unknown source\n   Shell of a marine gastropod mollusc of the Semicassis undulatum subspecies. Same shell as 2012,5015.5, Now known as Semicassis undulatum\n\n3. [animal remains | British Museum](https://www.britishmuseum.org/collection/object/G_2012-5016-36)\nSource: Unknown source\n   Museum number: 2012,5016.36 ; Description: Shell of a marine gastropod mollusc of the Bittium genus. ; Production date: 7thC(late) BC-(late)7thC AD ; Materials ...\n\n4. [animal remains | British Museum](https://www.britishmuseum.org/collection/object/G_2012-5015-7)\nSource: Unknown source\n   Museum number: 2012,5015.7 ; Description: Shell of the Mediterranean marine 'Trochus Turbinatus' gastropod mollusc. ; Production date: 7thC(late) BC-(late)7thC AD.\n\n5. [Marine Bivalve Shells of the British Isles - Collections: Natural History](https://naturalhistory.museumwales.ac.uk/britishbivalves/)\nSource: Unknown source\n   This site provides taxonomic information on every bivalve species found, and that may possibly be found, in British waters to a depth of 5000m.\n\nResults for tool call 'web_search' with arguments '{'query': 'Science Advances 2021 beads British Museum 2012,5015.17'}':\n1. [animal remains | British Museum](https://www.britishmuseum.org/collection/object/G_2012-5015-17)\nSource: Unknown source\n   Object Type: animal remains ; Museum number: 2012,5015.17 ; Description: Shell of a marine gastropod mollusc of the Mediterranean 'Nassa gibbosula' species.\n\n2. [Archaeologists find the oldest-known shell beads](https://leakeyfoundation.org/archaeologists-find-the-oldest-known-shell-beads/)\nSource: Unknown source\n   An international team of archaeologists recovered the 33 beads, between 2014 and 2018, from a cave in western Morocco.\n\n3. [The world's oldest-known beads are between 142000 ... - Instagram](https://www.instagram.com/p/DOMW6O7kxTt/?hl=en)\nDate published: Sep 4, 2025\nSource: Unknown source\n   The world's oldest-known beads are between 142,000 and 150,000 years old, and you're looking at them! These beads are pierced sea snail ...\n\n4. [OpenResearcher/web-bench · Datasets at Hugging Face](https://huggingface.co/datasets/OpenResearcher/web-bench)\nDate published: Mar 17, 2026\nSource: Unknown source\n   The object in the British Museum's collection with a museum number of 2012,5015.17 is the shell of a particular mollusk species. According ...\n\n5. [Shells may represent oldest known beads - Science News](https://www.sciencenews.org/article/shells-may-represent-oldest-known-beads)\nDate published: Jul 3, 2006\nSource: Unknown source\n   Researchers have identified three perforated shells dating to around 100000 years ago as beads, making these finds the oldest known examples ...\n\nResults for tool call 'web_search' with arguments '{'query': 'shell beads at least thousand years old Science Advances 2021'}':\n1. [Archaeologists find the oldest-known shell beads](https://leakeyfoundation.org/archaeologists-find-the-oldest-known-shell-beads/)\nDate published: Oct 6, 2021\nSource: Unknown source\n   An international team of archaeologists recovered the 33 beads, between 2014 and 2018, from a cave in western Morocco.\n\n2. [150,000-year-old shell jewelry found in Morocco - Facebook](https://www.facebook.com/groups/archeologyandcivilizations/posts/5428435290583284/)\nDate published: Sep 8, 2022\nSource: Unknown source\n   From a cave in western Morocco shell beads were recovered, determined to be between 142,000 and 150,000 years old. The beads were made from ...\n\n3. [Ostrich eggshell beads reveal 50,000-year-old social network in Africa](https://www.nature.com/articles/s41586-021-04227-2)\nDate published: Dec 20, 2021\nSource: Unknown source\n   Ostrich eggshell (OES) beads are the oldest fully manufactured beads and could be key to revealing Late Pleistocene social dynamics in Africa.\n\n4. [Archaeologists Just Discovered the World's Oldest Jewelry](https://news.artnet.com/art-world/worlds-oldest-jewelry-morocco-2037635)\nDate published: Nov 19, 2021\nSource: Unknown source\n   Archaeologists have discovered the world's oldest jewelry—33 beads made from snail shells 150000 years ago—in Morocco's Bizmoune Cave.\n\n5. [World's Oldest Manufactured Beads Are Older Than ... - ScienceDaily](https://www.sciencedaily.com/releases/2009/05/090505163021.htm)\nDate published: May 7, 2009\nSource: Unknown source\n   Sep. 22, 2021 — Shell beads found in a cave in Morocco are at least 142,000 years old. The archaeologists who found them say they're the ..."
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Calling tools:\n{'tools': [{'name': 'crawl_page', 'arguments': {'url': 'https://www.britishmuseum.org/collection/object/G_2012-5015-17', 'query': 'species of the shell'}}, {'name': 'web_search', 'arguments': {'query': 'Science Advances 2021 Nassa gibbosula beads'}}, {'name': 'web_search', 'arguments': {'query': '142,000 year old shell beads Science Advances 2021 abstract'}}]}"
+        }
+      ]
+    },
+    {
+      "role": "tool-response",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tool calling observation:\nResults for tool call 'crawl_page' with arguments '{'url': 'https://www.britishmuseum.org/collection/object/G_2012-5015-17', 'query': 'species of the shell'}':\nNo relevant information\n\nResults for tool call 'web_search' with arguments '{'query': 'Science Advances 2021 Nassa gibbosula beads'}':\n1. [Early middle stone age personal ornaments from Bizmoune Cave ...](https://experts.arizona.edu/en/publications/early-middle-stone-age-personal-ornaments-from-bizmoune-cave-essa/)\nSource: Unknown source\n   In: Science Advances. 2021 ; Vol. 7, No. 39. ... N2 - Ornaments such as beads are among the earliest signs of symbolic behavior among human ancestors. Their ...\n\n2. [Early Middle Stone Age personal ornaments from Bizmoune Cave ...](https://pmc.ncbi.nlm.nih.gov/articles/PMC8457661/)\nDate published: Sep 22, 2021\nSource: Unknown source\n   Shell beads from Bizmoune Cave (Morocco) show the early appearance and continuity of symbolic behavior among early Homo sapiens.\n\n3. [Nassarius shells: Preferred beads of the Palaeolithic - ResearchGate](https://www.researchgate.net/publication/282551332_Nassarius_shells_Preferred_beads_of_the_Palaeolithic)\nDate published: Apr 22, 2019\nSource: Unknown source\n   Research has shown that in Middle Palaeolithic sites in both Africa and Eurasia, members of the genus Nassarius were the preferred mollusks selected for use as ...\n\n4. [Nassa Gibbosula Beads Science Advances 2021 - Instagram](https://www.instagram.com/popular/nassa-gibbosula-beads-science-advances-2021/)\nSource: Unknown source\n   Watch short videos about nassa gibbosula beads science advances 2021 from people around the world. Science Advances 2021 Beads Nassa Gibbosula, Science ...\n\n5. [Archaeologists Just Discovered the World's Oldest Jewelry](https://news.artnet.com/art-world/worlds-oldest-jewelry-morocco-2037635)\nDate published: Nov 19, 2021\nSource: Unknown source\n   Archaeologists have discovered the world's oldest jewelry—33 beads made from snail shells 150000 years ago—in Morocco's Bizmoune Cave.\n\nResults for tool call 'web_search' with arguments '{'query': '142,000 year old shell beads Science Advances 2021 abstract'}':\n1. [Early Middle Stone Age personal ornaments from Bizmoune Cave ...](https://www.science.org/doi/10.1126/sciadv.abi8620)\nDate published: Sep 22, 2021\nSource: Unknown source\n   Many of the beads come as deposits dating to ≥142 thousand years, making them the oldest shell beads yet recovered. They extend the dates for ...\n\n2. [Archaeologists find the oldest-known shell beads](https://leakeyfoundation.org/archaeologists-find-the-oldest-known-shell-beads/)\nDate published: Oct 6, 2021\nSource: Unknown source\n   An international team of archaeologists recovered the 33 beads, between 2014 and 2018, from a cave in western Morocco.\n\n3. [Ancient shell beads from Western Morocco are 150,000 years old](https://www.facebook.com/groups/1331722814218106/posts/1871050356952013/)\nDate published: Nov 3, 2025\nSource: Unknown source\n   The oldest known jewelry, made from perforated seashells, was found in Bizmoune Cave, Morocco, dating back between 142,000 and 150,000 years.\n\n4. [Archaeologists Just Discovered the World's Oldest Jewelry](https://news.artnet.com/art-world/worlds-oldest-jewelry-morocco-2037635)\nDate published: Nov 19, 2021\nSource: Unknown source\n   In a cave in the western Morocco desert, archaeologists have discovered the world's oldest jewelry: a set of shell beads dated from 142,000 ...\n\n5. [150000-year-old beads found to be world's oldest form of jewelry](https://nypost.com/2021/11/26/150000-year-old-beads-are-worlds-oldest-form-of-jewelry/)\nDate published: Nov 26, 2021\nSource: Unknown source\n   Science Advances reported that excavators discovered 33 shell beads dated between 142,000 and 150,000 years old. While the beads themselves ..."
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Calling tools:\n{'tools': [{'name': 'crawl_page', 'arguments': {'url': 'https://www.science.org/doi/10.1126/sciadv.abi8620', 'query': 'abstract of the article: the minimum age of the beads in thousands of years'}}]}"
+        }
+      ]
+    },
+    {
+      "role": "tool-response",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tool calling observation:\nResults for tool call 'crawl_page' with arguments '{'url': 'https://www.science.org/doi/10.1126/sciadv.abi8620', 'query': 'abstract of the article: the minimum age of the beads in thousands of years'}':\n- The abstract of the article (Science Advances, 2021, DOI: 10.1126/sciadv.abi8620) reports that the shell beads from Bizmoune Cave, Morocco, represent the earliest known examples of personal ornamentation from the Middle Stone Age of North Africa.  \n- The minimum age of these beads is approximately **142,000 years** (i.e., 142 thousand years). This age is derived from uranium‑series dating of associated carbonate crusts and optically stimulated luminescence dating of sediments."
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Calling tools:\n{'tools': [{'name': 'final_answer', 'arguments': {'answer': '142'}}]}"
+        }
+      ]
+    },
+    {
+      "role": "tool-response",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tool calling observation:\n142"
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "elapsed_time": 101.06483602523804,
+    "total_tokens": 43075,
+    "prompt_tokens": 37456,
+    "completion_tokens": 5619,
+    "api_calls": 9
+  }
+}

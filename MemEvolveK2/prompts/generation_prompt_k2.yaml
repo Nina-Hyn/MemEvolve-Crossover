@@ -1,0 +1,100 @@
+# Generation Phase Prompt Template (K=2 dual-parent crossover)
+# Parents: agent_kb (primary) + voyager (secondary)
+
+prompt_template: |
+  ## Phase 2 – Memory System Generation (K=2 Dual-Parent Crossover)
+
+  ### Objective
+  Build an innovative, production-grade memory provider by **crossing over** two parent systems:
+  - **Primary parent**: {primary_provider}
+  - **Secondary parent**: {secondary_provider}
+
+  Synthesize the strongest mechanisms from BOTH parents while fixing known weaknesses identified in the analysis report.
+
+  ### Context
+  **Memory Integration**: Two memory types supported (tool memory is optional):
+  - **Text Memory** (required): Injected into agent's prompt at BEGIN and IN phases
+  - **Tool Memory** (optional): Injected as executable API functions (MemoryItemType.API)
+
+  **System Constraints**: Core agent loop cannot be modified. Memory system can evolve internally.
+
+  ### Parent Provider References (CRITICAL – Read Both)
+  **Primary Parent ({primary_provider})**:
+  {primary_provider_template}
+
+  **Secondary Parent ({secondary_provider})**:
+  {secondary_provider_template}
+
+  ### Crossover Design Guidelines
+  1. **From {primary_provider}**: Prefer structured KB retrieval, relevance filtering, and workflow-style guidance when appropriate.
+  2. **From {secondary_provider}**: Prefer skill/trajectory indexing, embedding-based retrieval, and progressive skill accumulation.
+  3. **Hybrid innovation**: Combine selective injection (avoid irrelevant top-1 retrieval) with rich trajectory storage.
+  4. **Do NOT** simply concatenate both providers or wrap one inside the other without integration.
+  5. Complexity must be >= both parent systems.
+
+  ### Analysis Report
+  {analysis_section}
+
+  ### Memory Types (CRITICAL)
+  {memory_types_definition}
+
+  **WARNING**: Your new system name MUST NOT duplicate any existing memory type.
+
+  ### Core Requirements
+  - NO hard-coded keyword matching for retrieval
+  - NO simple fallbacks
+  - Adaptive filtering: decide whether to inject memory based on context
+  - Production-ready implementation inheriting from BaseMemoryProvider
+
+  ### Technical Conventions
+  - **LLM Usage**:
+    ```python
+    messages = [{{"role": "user", "content": [{{"type": "text", "text": prompt}}]}}]
+    response = self.model(messages)
+    result = getattr(response, "content", str(response)).strip()
+    ```
+  - **Embeddings** (if used):
+    ```python
+    from sentence_transformers import SentenceTransformer
+    self.embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+    ```
+  - **Imports**: From `EvolveLab.base_memory`, `EvolveLab.memory_types` — DO NOT redefine these types
+
+  ### Core Methods
+  - `provide_memory(request: MemoryRequest)`: Return MemoryResponse with TEXT (required) and optional API items
+  - `take_in_memory(trajectory_data: TrajectoryData)`: Extract and store experience from trajectories
+
+  ## Output Format (CRITICAL - Must Follow Exactly)
+
+  1. Output **only** one system in Markdown format
+  2. Use bolded key-value pairs (**key**: value) for all section items — NOT markdown tables
+  3. Required sections:
+     - ## Provider Information: **Class Name** and **Module Name**
+     - ## Provider Code: Single python code block
+     - ## Configuration: Bolded key-value pairs (or one ```json block)
+     - ## Memory Type: **Enum Name** and **Enum Value**
+  4. No explanations, filenames, or extra content outside the system
+  5. Python code must inherit from BaseMemoryProvider and be syntactically valid
+
+  ### Configuration Format Rules
+
+  **Format**: `**key**: value` (one per line, no backticks on values unless required)
+
+  **CRITICAL - Storage Path Format**: All storage paths must follow `./storage/{{Enum Value}}/...`
+
+  ### Naming Rules (CRITICAL)
+  **Enum Name**: UPPERCASE_WITH_UNDERSCORES
+  **Enum Value**: lowercase_with_underscores
+  **Class Name**: PascalCase with "Provider" suffix
+  **Module Name**: lowercase_with_underscores with "_provider" suffix
+
+  **Example:**
+  - Enum Name: SYNAPTIC_FLOW
+  - Enum Value: synaptic_flow
+  - Class Name: SynapticFlowProvider
+  - Module Name: synaptic_flow_provider
+
+  ### Final Checklist
+  - Unique naming (not in Memory Types list)
+  - True crossover of both parents (not a trivial copy of either)
+  - Production-ready, no hard-coded matching

@@ -1,0 +1,27 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Runtime / evolution artifacts (generated on fresh runs)
+memevolve_k2_work/
+gaia_output/holdout_k2_evolved_*/
+gaia_output/*_run.log
+*.log
+
+# Storage backups created during evolution
+storage/*_round*/
+
+# HF cache duplicates
+storage/models/models--*/
+
+# IDE
+.idea/
+.vscode/
+.DS_Store

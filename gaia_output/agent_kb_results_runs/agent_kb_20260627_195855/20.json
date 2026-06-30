@@ -1,0 +1,278 @@
+{
+  "agent_result": "Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments",
+  "judgement": "incorrect",
+  "task_id": "46719c30-f4c3-4cad-be07-d5cb21eee6bb",
+  "item_index": 20,
+  "level": 1,
+  "question": "Of the authors (First M. Last) that worked on the paper \"Pie Menus or Linear Menus, Which Is Better?\" in 2015, what was the title of the first paper authored by the one that had authored prior papers?",
+  "full_query": "Of the authors (First M. Last) that worked on the paper \"Pie Menus or Linear Menus, Which Is Better?\" in 2015, what was the title of the first paper authored by the one that had authored prior papers?",
+  "golden_answer": "Mapping Human Oriented Information to Software Agents for Online Systems Usage",
+  "status": "success",
+  "agent_trajectory": [
+    {
+      "name": "plan",
+      "value": "## Goal 1: Identify the authors (First M. Last) of the 2015 paper \"Pie Menus or Linear Menus, Which Is Better?\"\n- Path 1.1: Use an academic search engine (e.g., Google Scholar) with the exact title and year 2015 to retrieve the result page.\n  - Success: The search result page clearly lists the authors in the format \"First M. Last\".\n- Path 1.2: Visit the paper’s landing page on a publisher site (e.g., ACM Digital Library, IEEE Xplore) by searching for the exact title.\n  - Success: The page metadata or HTML shows the full author list, including middle initials.\n- Path 1.3: Use DBLP (dblp.org) with the exact title to find the bibliographic entry and extract the author list.\n  - Success: DBLP entry provides the authors in the correct order and format.\n- Path 1.4: Search for the paper on arXiv (if available) and extract author names from the header.\n  - Success: The arXiv page lists all authors with full names.\n\n## Goal 2: Determine which author had prior publications (i.e., published before 2015)\n- Path 2.1: For each author from Goal 1, search their name in DBLP and apply a year filter (< 2015) to check for any publications.\n  - Success: At least one publication with year < 2015 is found for exactly one author; identify that author.\n- Path 2.2: For each author, query Google Scholar with the author’s name and sort results by year; inspect the earliest result’s year.\n  - Success: The earliest publication year is clearly before 2015, confirming prior publication history.\n- Path 2.3: Locate the author’s ORCID or university profile page (e.g., via search “First M. Last ORCID”) and list their publications by year.\n  - Success: The profile shows a publication timeline with at least one entry dated earlier than 2015.\n- Path 2.4: Use the \"cited by\" or \"related\" links from the 2015 paper to follow co-author profiles and manually check their earliest listed work.\n  - Success: A co-author page reveals a publication record that includes a pre-2015 paper.\n\n## Goal 3: Find the title of the first paper authored by that prior-publishing author\n- Path 3.1: In DBLP, view the author’s publication list sorted by year; the top entry (smallest year) is the first paper.\n  - Success: The title of that top entry is obtained and matches the original publication venue’s metadata.\n- Path 3.2: Search the author’s name in Google Scholar with the term “first paper” or “earliest” and inspect the earliest result.\n  - Success: The first result (by year) provides an exact title string.\n- Path 3.3: Visit the author’s Google Scholar profile page (or ORCID profile) and scroll to the earliest publication; note its title.\n  - Success: The profile displays the earliest publication with its full title.\n- Path 3.4: Use a general web search with the author’s name and “publication list” or “CV” to locate a document that lists all publications in chronological order.\n  - Success: The list contains the first paper’s title as it appears in the original source.",
+      "think": "",
+      "cot_think": "We need to decompose the task into goals and paths. The task: Of the authors (First M. Last) that worked on the paper \"Pie Menus or Linear Menus, Which Is Better?\" in 2015, what was the title of the first paper authored by the one that had authored prior papers?\n\nWe need to identify authors of that 2015 paper, then determine which of those authors had prior publications (i.e., started publishing before 2015), then find that author's earliest paper title.\n\nWe must plan using available tools: web_search, crawl_page, inspect_file_as_image/text/audio, final_answer. No actual execution, just planning.\n\nWe need to output goals and paths. Each goal has 1-5 independent paths. Paths within a goal are sequential? Actually \"Paths within goal execute sequentially\" but goals are parallel. But we are planning, not executing.\n\nWe should create 3 goals: \nGoal 1: Identify all authors of the 2015 paper.\nGoal 2: Determine which author had prior publications (i.e., published before 2015).\nGoal 3: Find the title of that author's first paper.\n\nBut note: the task asks for \"the one that had authored prior papers\" - it might be that only one author had prior papers. We need to find that author and then their first paper.\n\nWe can also combine goals, but better to decompose.\n\nFor each goal, we need multiple paths.\n\nLet's design:\n\n## Goal 1: Identify authors of the 2015 paper \"Pie Menus or Linear Menus, Which Is Better?\"\nPath 1.1: Search academic databases by exact title and year.\n- Success: Retrieve full author list with correct order (First M. Last).\nPath 1.2: Crawl the paper's page (e.g., from ACM Digital Library, IEEE, Springer) using DOI or URL.\n- Success: Extract authors from metadata.\nPath 1.3: Use Google Scholar search for the title and year, then open the result page to see authors.\n- Success: Obtain author list.\n\n(Path 1.4, 1.5 optional)\n\n## Goal 2: Determine which of those authors had prior publications (before 2015)\nFor each author, we need to check if they have publications before 2015. But since goals are independent, we can have paths that search for each author's earliest publication and compare year. However, we don't know authors yet from Goal 1. But planning can be abstract: For each identified author, we need to check their publication history.\n\nPerhaps we should structure Goal 2 as: For the set of authors identified, determine which one has the earliest publication before 2015, and identify that author. But we need to handle multiple authors.\n\nAlternatively, we can have Goal 2: Check publication history of each author to find the one with prior publications.\nPath 2.1: For each author, search their name in DBLP filtered by year < 2015.\nPath 2.2: Search author name in Google Scholar, sort by year, check earliest result.\nPath 2.3: Use author's ORCID or university profile page to get publication timeline.\nSuccess: Identify the author(s) with publications before 2015, choose the one with the earliest first paper? The task says \"the one that had authored prior papers\" - if multiple, we need to select one? Possibly they mean the author who had published before, and we find their first paper. If multiple, we might need to pick the one who had the earliest first paper or any? The task says \"the one that had authored prior papers\" - it might imply there is exactly one such author. We'll assume we find that author.\n\n## Goal 3: Find the title of the first paper by that author.\nPath 3.1: Search for author's earliest publication using DBLP sorted by year.\nPath 3.2: Search author name + \"first paper\" or \"earliest publication\" in Google Scholar.\nPath 3.3: Crawl author's Google Scholar profile page to see publications in order.\nSuccess: Extract exact title of the earliest paper (before 2015).\n\nWe should ensure that the first paper is the chronologically earliest, not just prior to 2015.\n\nNow, we need to output in the specified format. Each goal with paths, each path with success criteria.\n\nWe should avoid actually solving, just plan.\n\nLet's write the output.",
+      "memory_guidance": "AGENT-KB Student Guidance:\n1. Consider breaking the task into three clear sub-goals: first, identify all authors of the 2015 paper using exact title and year; second, determine which of those authors had any prior publications (i.e., start their publishing record before 2015); third, locate the earliest paper by that author and extract its exact title. This decomposition helps you isolate where to focus search effort and cross-check each step.\n\n2. When searching for an author’s prior work, try using multiple academic databases (e.g., Google Scholar, DBLP, arXiv) and combine the author’s name with early year filters (e.g., “Last, F. M.” before 2015). Often the “first paper” may be a conference proceedings or a less-indexed technical report, so also try searching the author’s full name without middle initial and using ORCID or university profiles to get a complete publication timeline.\n\n3. After identifying the candidate author and their earliest paper, verify the title by checking the original publication venue’s metadata (e.g., DOI landing page, conference website) rather than relying solely on aggregated citations or secondary lists, to ensure the title string is correct and not a shortened or reformatted version.\n\nAGENT-KB Teacher Guidance:\nTo tackle this task effectively, begin by decomposing it into clear sub-steps: first, locate the 2015 paper and extract its author list (using exact title queries in academic search engines like Google Scholar or DBLP), then identify which of those authors had previously published (check their publication history via ORCID or author profiles). Next, for the chosen author, retrieve the title of their earliest known paper by searching that author's name with \"first paper\" or sorting by year in a reliable database. Validate each piece of information by cross-referencing at least two independent sources (e.g., a full-text snippet and a dataset entry) and ensure the author's name format matches \"First M. Last\" as given—pay attention to possible middle initials or hyphenated surnames. When handling ambiguous results, use multiple query variants (e.g., \"Pie Menus or Linear Menus 2015 authors\", \"first paper [author name] 1990\") and inspect snippet context to confirm accuracy, then return the exact title string as it appears in the source."
+    },
+    {
+      "name": "action",
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "arguments": {
+            "query": "\"Pie Menus or Linear Menus, Which Is Better?\" 2015"
+          }
+        }
+      ],
+      "obs": "Results for tool call 'web_search' with arguments '{'query': '\"Pie Menus or Linear Menus, Which Is Better?\" 2015'}':\n1. [[PDF] Pie Menus or Linear Menus, Which Is Better? - Pietro Murano](https://pietromurano.org/Papers/Murano-Khan-Published-Version.pdf)\nSource: Unknown source\n   Pie Menus or Linear Menus, Which Is Better? 1 Pietro Murano, 2 Iram N. Khan ... Whether this figure is correct or not, the amount is likely to be more in 2015 ...\n\n2. [(PDF) Pie Menus or Linear Menus, Which Is Better? - ResearchGate](https://www.researchgate.net/publication/283265537_Pie_Menus_or_Linear_Menus_Which_Is_Better)\nDate published: Jun 11, 2026\nSource: Unknown source\n   Pie Menus or Linear Menus, Which Is Better? September 2015. Authors: Pietro Murano at OsloMet – Oslo Metropolitan University · Pietro Murano.\n\n3. [Pie Menus or Linear Menus, Which Is Better? - Semantic Scholar](https://www.semanticscholar.org/paper/Pie-Menus-or-Linear-Menus%2C-Which-Is-Better-Murano-Khan/54a14c467ca976cbdd0f1d8a41426e6347a5e4c2)\nDate published: Sep 9, 2015\nSource: Unknown source\n   Pie Menus or Linear Menus, Which Is Better? · 7 Citations · 10 References · Related Papers ...\n\n4. [‪Pietro Murano‬ - ‪Google Scholar‬](https://scholar.google.com/citations?user=L9um4xoAAAAJ&hl=en)\nSource: Unknown source\n   Pie menus or linear menus, which is better? P Murano, IN Khan. ARPN Publishers, 2015. 8, 2015. Anthropomorphic vs non-anthropomorphic user interface feedback ...\n\n5. [(PDF) User Interface Menu Design Performance and User Preferences](https://www.academia.edu/42056802/User_Interface_Menu_Design_Performance_and_User_Preferences_A_Review_and_Ways_Forward)\nSource: Unknown source\n   Khan, \"Pie menus or linear menus, which is better?\", Journal of Emerging Trends in Computing and Information Sciences, Vol. 6, Issue 9, September 2015. K.A. ...",
+      "think": "I need to start with Goal 1: identify the authors of the 2015 paper 'Pie Menus or Linear Menus, Which Is Better?'. I'll use a web search with the exact title and year to find the publication page or bibliographic entry. This is the first path for Goal 1.",
+      "cot_think": null,
+      "memory_guidance": null
+    },
+    {
+      "name": "action",
+      "tool_calls": [
+        {
+          "name": "crawl_page",
+          "arguments": {
+            "url": "https://www.semanticscholar.org/paper/Pie-Menus-or-Linear-Menus%2C-Which-Is-Better-Murano-Khan/54a14c467ca976cbdd0f1d8a41426e6347a5e4c2",
+            "query": "List the full author names of this paper, including first and middle initials."
+          }
+        },
+        {
+          "name": "crawl_page",
+          "arguments": {
+            "url": "https://pietromurano.org/Papers/Murano-Khan-Published-Version.pdf",
+            "query": "Extract the author names from the PDF, showing first name, middle initial, and last name for each author."
+          }
+        }
+      ],
+      "obs": "Results for tool call 'crawl_page' with arguments '{'url': 'https://www.semanticscholar.org/paper/Pie-Menus-or-Linear-Menus%2C-Which-Is-Better-Murano-Khan/54a14c467ca976cbdd0f1d8a41426e6347a5e4c2', 'query': 'List the full author names of this paper, including first and middle initials.'}':\nNo relevant information\n\nResults for tool call 'crawl_page' with arguments '{'url': 'https://pietromurano.org/Papers/Murano-Khan-Published-Version.pdf', 'query': 'Extract the author names from the PDF, showing first name, middle initial, and last name for each author.'}':\nNo relevant information",
+      "think": "Goal 1: Obtain the full author list for the 2015 paper. From the search results, the paper likely has authors Pietro Murano and Iram N. Khan, but we need to confirm their exact format (including middle initials) and if any additional authors exist. Path 1.1: Crawl the Semantic Scholar page to extract the author list. Path 1.2: Crawl the PDF from pietromurano.org to see the author block. Both can be executed in parallel. Goal 2 (determine which author had prior publications) and Goal 3 (title of first paper) will be addressed after obtaining the author list.",
+      "cot_think": null,
+      "memory_guidance": null
+    },
+    {
+      "name": "action",
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "arguments": {
+            "query": "Pietro Murano publications before 2015"
+          }
+        },
+        {
+          "name": "web_search",
+          "arguments": {
+            "query": "Iram N. Khan publications before 2015"
+          }
+        }
+      ],
+      "obs": "Results for tool call 'web_search' with arguments '{'query': 'Pietro Murano publications before 2015'}':\n1. [‪Pietro Murano‬ - ‪Google Scholar‬](https://scholar.google.com/citations?user=L9um4xoAAAAJ&hl=en)\nSource: Unknown source\n   Pietro Murano. Professor (Full) of Human Computer Interaction. Verified ... ARPN Publishers, 2015. 8, 2015. Anthropomorphic vs non-anthropomorphic user ...\n\n2. [Publications - Pietro Murano](https://pietromurano.org/publications.html)\nSource: Unknown source\n   Murano, Pietro & Sander, Margrete (2016) User Interface Menu Design Performance and User Preferences: A Review and Ways Forward - PDF, International Journal of ...\n\n3. [Pietro MURANO | Doctorate in Computer Science | Research profile](https://www.researchgate.net/profile/Pietro-Murano)\nSource: Unknown source\n   Dr Pietro Murano currently works at the Department of Computer Science, Oslo Metropolitan University. Dr Murano does research in Human-computer ...\n\n4. [View of A usability evaluation of Web user interface scrolling types](https://firstmonday.org/ojs/index.php/fm/article/view/10309/9400)\nSource: Unknown source\n   Pietro Murano is an Associate Professor of Computer Science at Oslo Metropolitan University, Norway. He is a Computer Scientist specializing in interaction, HCI ...\n\n5. [SCIENCE AND TECHNOLOGY PUBLICATIONS - SCITEPRESS](https://www.scitepress.org/Papers/2010/28944/)\nSource: Unknown source\n   Murano, Pietro, Holt, P. O. (2009) Anthropomorphic Feedback In User Interfaces: The Effect of Personality Traits, Context and Grice's Maxims on Effectiveness ...\n\nResults for tool call 'web_search' with arguments '{'query': 'Iram N. Khan publications before 2015'}':\n1. [‪Dr. Iram Khan‬ - ‪Google Scholar‬](https://scholar.google.com/citations?user=RzmqKwcAAAAJ&hl=en)\nSource: Unknown source\n   Iram Khan. Auditor General of Pakistan, Islamabad. Verified email at ... Veterinaria 3 (2), 9-13, 2015. 19, 2015. Managing dengue outbreak in Lahore ...\n\n2. [Iram KHAN | Joint Secretary to the Cabinet | PhD | Research profile](https://www.researchgate.net/profile/Iram-Khan-4)\nSource: Unknown source\n   Iram KHAN, Joint Secretary to the Cabinet | Cited by 115 | | Read 12 publications | Contact Iram KHAN.\n\n3. [Dr. Iram Khan - Independent Researcher - Academia.edu](https://independent.academia.edu/DrIramKhan)\nSource: Unknown source\n   Dr. Iram Khan: 37 Followers, 3 Following, 13 Research papers. Research interests: Sri Lanka, Indigenous Peoples Rights, and Management Science.\n\n4. [Iram Siraj - Department of Education](https://www.education.ox.ac.uk/person/iram-siraj/)\nSource: Unknown source\n   Amongst her many published works she has authored award-winning books including: Social Class and Educational Inequality the Role of Parents and Schools (2015) ...\n\n5. [Ms. Iram Khan Iqbal | Author - SciProfiles](https://sciprofiles.com/profile/378163)\nDate published: Feb 23, 2018\nSource: Unknown source\n   Iram Khan Iqbal's profile page generated by SciProfiles. SciProfiles provides open access to the scholarly community, offering comprehensive ...",
+      "think": "The initial search for the 2015 paper revealed two authors: Pietro Murano and Iram N. Khan. Now I need to determine which of these authors had prior publications (before 2015). I'll search for their publication histories in parallel: one search for Pietro Murano's early works and another for Iram N. Khan's early works. This corresponds to Goal 2, Path 2.1 (DBLP/Google Scholar search with year filter). I'll also try to open the Google Scholar profile for Pietro Murano to see his earliest publications, and search for Iram N. Khan's profile.",
+      "cot_think": null,
+      "memory_guidance": null
+    },
+    {
+      "name": "action",
+      "tool_calls": [
+        {
+          "name": "crawl_page",
+          "arguments": {
+            "url": "https://pietromurano.org/publications.html",
+            "query": "List all publications in chronological order and give the title of the first (earliest) publication."
+          }
+        }
+      ],
+      "obs": "Results for tool call 'crawl_page' with arguments '{'url': 'https://pietromurano.org/publications.html', 'query': 'List all publications in chronological order and give the title of the first (earliest) publication.'}':\n**Chronological List of Publications (earliest to latest)**  \n\n- 2000: *Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments* (International Presentation)  \n- 2001: *A New Software Agent 'Learning' Algorithm*; *Mapping Human-Oriented Information to Software Agents for Online Systems Usage*  \n- 2002: *Anthropomorphic Vs Non-Anthropomorphic Software Interface Feedback for Online Systems Usage*; *Effectiveness of Mapping Human-Oriented Information to Feedback From a Software Interface*  \n- 2003: *Anthropomorphic Vs Non-Anthropomorphic Software Interface Feedback for Online Factual Delivery*; *Augmenting Environments By Automated Sign Location and Text Detection* (Ritchings et al.)  \n- 2005: *Effectiveness of VRML Building Models for Direction Finding*; *Why Anthropomorphic User Interface Feedback Can be Effective and Preferred by Users*  \n- 2006: Book chapter: *Why Anthropomorphic User Interface Feedback can be Effective and Preferred by Users*  \n- 2007: Journal: *Anthropomorphic Feedback In User Interfaces: The Effect of Personality Traits, Context and Grice's Maxims on Effectiveness and Preferences*; *Usefulness of VRML Building Models in a Direction Finding Context*; Conference: *Anthropomorphic Vs Non-Anthropomorphic User Interface Feedback for Online Hotel Bookings*  \n- 2008: *Effectiveness and Preferences of Anthropomorphic User Interface Feedback in a PC Building Context and Cognitive Load*  \n- 2009: *Evaluation of Anthropomorphic User Interface Feedback in an Email Client Context and Affordances*; Book chapter: *Anthropomorphic Feedback In User Interfaces...* (in Cross-Disciplinary Advances)  \n- 2010: *Evaluation of an Anthropomorphic User Interface in a Telephone Bidding Context and Affordances*; *Effectiveness and Preferences of Anthropomorphic Feedback in a Statistics Context*  \n- 2011: *Evaluation of an Anthropomorphic User Interface in a Travel Reservation Context and Affordances*; *Evaluation of Human-Like Anthropomorphism in the Context of Online Bidding and Affordances*; *Anthropomorphic User Interface Feedback in a Sewing Context and Affordances*; *Evaluation of Anthropomorphic Feedback for an Online Auction and Affordances*  \n- 2012: *The Impact on Effectiveness and User Satisfaction of Menu Positioning on Web Pages*  \n- 2014: *A Comparative Study of the Usability of Touch-Based and Mouse-Based Interaction*  \n- 2015: *Pie Menus or Linear Menus, Which Is Better?*; *Menu Positioning on Web Pages. Does it Matter?*  \n- 2016: *A Universally Designed and Usable Data Visualization for A Mobile Application in the Context of Rheumatoid Arthritis*; *User Interface Menu Design Performance and User Preferences: A Review and Ways Forward*  \n- 2017: *Universal Design of User Interfaces in Self-driving Cars*  \n- 2018: *A Preliminary Investigation into the Usability of Force Touch Interaction in a Mobile Context*; *An Algorithm For Automatically Detecting Dyslexia On The Fly*; *A New User Interface for a Text Proofreading Web Portal in a Digitization and Crowdsourcing Context*  \n- 2019: *Security and User Interface Usability of Graphical Authentication Systems A Review*  \n- 2020: *A Preliminary Usability and Universal Design Evaluation of a Television App User Interface*; *A Usability Evaluation of Web User Interface Scrolling Types*  \n- 2021: *The Design and Evaluation of a New Smartwatch User Interface*  \n- 2022: *The Design and Evaluation of an Online Dictionary User Interface*; *Is Carousel Interaction Really Usable?*  \n- 2023: *Designing User Interface Toggles for Usability*; *The Usability of Hidden Functional Elements in Mobile User Interfaces*; Book chapter: *New Universal Design Heuristics for Mobile Augmented Reality Applications*  \n- 2024: Book chapter: *A Usability Investigation of Parallax Scrolling for Web Pages*; *Enhancing Learning Through Universally Designed Augmented Reality: A Comparative Study*; *The Usability of Persistent and Non-Persistent Headers on Web Pages*  \n- 2025: *Implementing Virtual Reality for Fire Evacuation Preparedness at Schools*; Book chapter: *Effective Nudging in Digital Environments*; *Towards Integrating Digital Preparedness into Higher Education*  \n- 2026: Book chapter: *A Usability and Universal Design Investigation into Scrolljacking for Web Pages*; *Virtual Reality Applications for Civilian Emergency Preparedness Training: A Bibliometric Review*  \n\n**First (Earliest) Publication Title:**  \n*Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments* (2000)",
+      "think": "We have identified the authors: Pietro Murano and Iram N. Khan. From the search results, Pietro Murano has publications in 2009 and 2010, indicating prior work before 2015. Iram N. Khan's publications seem to start around 2015. So Pietro Murano is the author with prior publications. Now we need to find the title of his first paper. We'll crawl his publications page to see the chronological list and get the title of his earliest paper.",
+      "cot_think": null,
+      "memory_guidance": null
+    },
+    {
+      "name": "action",
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "arguments": {
+            "query": "\"Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments\""
+          }
+        }
+      ],
+      "obs": "Results for tool call 'web_search' with arguments '{'query': '\"Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments\"'}':\n1. [Publications - Pietro Murano](https://pietromurano.org/publications.html)\nSource: Unknown source\n   Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments Womens Engineering Society (WES) 73rd Annual ...",
+      "think": "I have identified that the authors of the 2015 paper are Pietro Murano and Iram N. Khan. Pietro Murano has prior publications (earliest in 2000), while Iram N. Khan appears to be a different person (auditor) without HCI prior publications. From Pietro Murano's publications page, the earliest publication title is 'Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments'. To verify this title from another source, I will search for that exact title to ensure accuracy.",
+      "cot_think": null,
+      "memory_guidance": null
+    },
+    {
+      "name": "action",
+      "tool_calls": [
+        {
+          "name": "final_answer",
+          "arguments": {
+            "answer": "Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments"
+          }
+        }
+      ],
+      "obs": "Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments",
+      "think": "All goals are now resolved. Goal 1 identified the authors as Pietro Murano and Iram N. Khan. Goal 2 determined that Pietro Murano had prior publications (earliest 2000), while Iram N. Khan did not have clear prior HCI publications. Goal 3 retrieved the title of Pietro Murano's first paper: 'Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments'. I will now consolidate and provide the final answer.",
+      "cot_think": null,
+      "memory_guidance": null
+    }
+  ],
+  "agent_messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "New task:\nOf the authors (First M. Last) that worked on the paper \"Pie Menus or Linear Menus, Which Is Better?\" in 2015, what was the title of the first paper authored by the one that had authored prior papers?"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "————Memory System Guidance————\nAGENT-KB Student Guidance:\n1. Consider breaking the task into three clear sub-goals: first, identify all authors of the 2015 paper using exact title and year; second, determine which of those authors had any prior publications (i.e., start their publishing record before 2015); third, locate the earliest paper by that author and extract its exact title. This decomposition helps you isolate where to focus search effort and cross-check each step.\n\n2. When searching for an author’s prior work, try using multiple academic databases (e.g., Google Scholar, DBLP, arXiv) and combine the author’s name with early year filters (e.g., “Last, F. M.” before 2015). Often the “first paper” may be a conference proceedings or a less-indexed technical report, so also try searching the author’s full name without middle initial and using ORCID or university profiles to get a complete publication timeline.\n\n3. After identifying the candidate author and their earliest paper, verify the title by checking the original publication venue’s metadata (e.g., DOI landing page, conference website) rather than relying solely on aggregated citations or secondary lists, to ensure the title string is correct and not a shortened or reformatted version.\n\nAGENT-KB Teacher Guidance:\nTo tackle this task effectively, begin by decomposing it into clear sub-steps: first, locate the 2015 paper and extract its author list (using exact title queries in academic search engines like Google Scholar or DBLP), then identify which of those authors had previously published (check their publication history via ORCID or author profiles). Next, for the chosen author, retrieve the title of their earliest known paper by searching that author's name with \"first paper\" or sorting by year in a reliable database. Validate each piece of information by cross-referencing at least two independent sources (e.g., a full-text snippet and a dataset entry) and ensure the author's name format matches \"First M. Last\" as given—pay attention to possible middle initials or hyphenated surnames. When handling ambiguous results, use multiple query variants (e.g., \"Pie Menus or Linear Menus 2015 authors\", \"first paper [author name] 1990\") and inspect snippet context to confirm accuracy, then return the exact title string as it appears in the source.\n————End Memory————"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Now, begin your planning analysis for this task!"
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "[PLAN]:\n## Goal 1: Identify the authors (First M. Last) of the 2015 paper \"Pie Menus or Linear Menus, Which Is Better?\"\n- Path 1.1: Use an academic search engine (e.g., Google Scholar) with the exact title and year 2015 to retrieve the result page.\n  - Success: The search result page clearly lists the authors in the format \"First M. Last\".\n- Path 1.2: Visit the paper’s landing page on a publisher site (e.g., ACM Digital Library, IEEE Xplore) by searching for the exact title.\n  - Success: The page metadata or HTML shows the full author list, including middle initials.\n- Path 1.3: Use DBLP (dblp.org) with the exact title to find the bibliographic entry and extract the author list.\n  - Success: DBLP entry provides the authors in the correct order and format.\n- Path 1.4: Search for the paper on arXiv (if available) and extract author names from the header.\n  - Success: The arXiv page lists all authors with full names.\n\n## Goal 2: Determine which author had prior publications (i.e., published before 2015)\n- Path 2.1: For each author from Goal 1, search their name in DBLP and apply a year filter (< 2015) to check for any publications.\n  - Success: At least one publication with year < 2015 is found for exactly one author; identify that author.\n- Path 2.2: For each author, query Google Scholar with the author’s name and sort results by year; inspect the earliest result’s year.\n  - Success: The earliest publication year is clearly before 2015, confirming prior publication history.\n- Path 2.3: Locate the author’s ORCID or university profile page (e.g., via search “First M. Last ORCID”) and list their publications by year.\n  - Success: The profile shows a publication timeline with at least one entry dated earlier than 2015.\n- Path 2.4: Use the \"cited by\" or \"related\" links from the 2015 paper to follow co-author profiles and manually check their earliest listed work.\n  - Success: A co-author page reveals a publication record that includes a pre-2015 paper.\n\n## Goal 3: Find the title of the first paper authored by that prior-publishing author\n- Path 3.1: In DBLP, view the author’s publication list sorted by year; the top entry (smallest year) is the first paper.\n  - Success: The title of that top entry is obtained and matches the original publication venue’s metadata.\n- Path 3.2: Search the author’s name in Google Scholar with the term “first paper” or “earliest” and inspect the earliest result.\n  - Success: The first result (by year) provides an exact title string.\n- Path 3.3: Visit the author’s Google Scholar profile page (or ORCID profile) and scroll to the earliest publication; note its title.\n  - Success: The profile displays the earliest publication with its full title.\n- Path 3.4: Use a general web search with the author’s name and “publication list” or “CV” to locate a document that lists all publications in chronological order.\n  - Success: The list contains the first paper’s title as it appears in the original source."
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Calling tools:\n{'tools': [{'name': 'web_search', 'arguments': {'query': '\"Pie Menus or Linear Menus, Which Is Better?\" 2015'}}]}"
+        }
+      ]
+    },
+    {
+      "role": "tool-response",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tool calling observation:\nResults for tool call 'web_search' with arguments '{'query': '\"Pie Menus or Linear Menus, Which Is Better?\" 2015'}':\n1. [[PDF] Pie Menus or Linear Menus, Which Is Better? - Pietro Murano](https://pietromurano.org/Papers/Murano-Khan-Published-Version.pdf)\nSource: Unknown source\n   Pie Menus or Linear Menus, Which Is Better? 1 Pietro Murano, 2 Iram N. Khan ... Whether this figure is correct or not, the amount is likely to be more in 2015 ...\n\n2. [(PDF) Pie Menus or Linear Menus, Which Is Better? - ResearchGate](https://www.researchgate.net/publication/283265537_Pie_Menus_or_Linear_Menus_Which_Is_Better)\nDate published: Jun 11, 2026\nSource: Unknown source\n   Pie Menus or Linear Menus, Which Is Better? September 2015. Authors: Pietro Murano at OsloMet – Oslo Metropolitan University · Pietro Murano.\n\n3. [Pie Menus or Linear Menus, Which Is Better? - Semantic Scholar](https://www.semanticscholar.org/paper/Pie-Menus-or-Linear-Menus%2C-Which-Is-Better-Murano-Khan/54a14c467ca976cbdd0f1d8a41426e6347a5e4c2)\nDate published: Sep 9, 2015\nSource: Unknown source\n   Pie Menus or Linear Menus, Which Is Better? · 7 Citations · 10 References · Related Papers ...\n\n4. [‪Pietro Murano‬ - ‪Google Scholar‬](https://scholar.google.com/citations?user=L9um4xoAAAAJ&hl=en)\nSource: Unknown source\n   Pie menus or linear menus, which is better? P Murano, IN Khan. ARPN Publishers, 2015. 8, 2015. Anthropomorphic vs non-anthropomorphic user interface feedback ...\n\n5. [(PDF) User Interface Menu Design Performance and User Preferences](https://www.academia.edu/42056802/User_Interface_Menu_Design_Performance_and_User_Preferences_A_Review_and_Ways_Forward)\nSource: Unknown source\n   Khan, \"Pie menus or linear menus, which is better?\", Journal of Emerging Trends in Computing and Information Sciences, Vol. 6, Issue 9, September 2015. K.A. ..."
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Calling tools:\n{'tools': [{'name': 'crawl_page', 'arguments': {'url': 'https://www.semanticscholar.org/paper/Pie-Menus-or-Linear-Menus%2C-Which-Is-Better-Murano-Khan/54a14c467ca976cbdd0f1d8a41426e6347a5e4c2', 'query': 'List the full author names of this paper, including first and middle initials.'}}, {'name': 'crawl_page', 'arguments': {'url': 'https://pietromurano.org/Papers/Murano-Khan-Published-Version.pdf', 'query': 'Extract the author names from the PDF, showing first name, middle initial, and last name for each author.'}}]}"
+        }
+      ]
+    },
+    {
+      "role": "tool-response",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tool calling observation:\nResults for tool call 'crawl_page' with arguments '{'url': 'https://www.semanticscholar.org/paper/Pie-Menus-or-Linear-Menus%2C-Which-Is-Better-Murano-Khan/54a14c467ca976cbdd0f1d8a41426e6347a5e4c2', 'query': 'List the full author names of this paper, including first and middle initials.'}':\nNo relevant information\n\nResults for tool call 'crawl_page' with arguments '{'url': 'https://pietromurano.org/Papers/Murano-Khan-Published-Version.pdf', 'query': 'Extract the author names from the PDF, showing first name, middle initial, and last name for each author.'}':\nNo relevant information"
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Calling tools:\n{'tools': [{'name': 'web_search', 'arguments': {'query': 'Pietro Murano publications before 2015'}}, {'name': 'web_search', 'arguments': {'query': 'Iram N. Khan publications before 2015'}}]}"
+        }
+      ]
+    },
+    {
+      "role": "tool-response",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tool calling observation:\nResults for tool call 'web_search' with arguments '{'query': 'Pietro Murano publications before 2015'}':\n1. [‪Pietro Murano‬ - ‪Google Scholar‬](https://scholar.google.com/citations?user=L9um4xoAAAAJ&hl=en)\nSource: Unknown source\n   Pietro Murano. Professor (Full) of Human Computer Interaction. Verified ... ARPN Publishers, 2015. 8, 2015. Anthropomorphic vs non-anthropomorphic user ...\n\n2. [Publications - Pietro Murano](https://pietromurano.org/publications.html)\nSource: Unknown source\n   Murano, Pietro & Sander, Margrete (2016) User Interface Menu Design Performance and User Preferences: A Review and Ways Forward - PDF, International Journal of ...\n\n3. [Pietro MURANO | Doctorate in Computer Science | Research profile](https://www.researchgate.net/profile/Pietro-Murano)\nSource: Unknown source\n   Dr Pietro Murano currently works at the Department of Computer Science, Oslo Metropolitan University. Dr Murano does research in Human-computer ...\n\n4. [View of A usability evaluation of Web user interface scrolling types](https://firstmonday.org/ojs/index.php/fm/article/view/10309/9400)\nSource: Unknown source\n   Pietro Murano is an Associate Professor of Computer Science at Oslo Metropolitan University, Norway. He is a Computer Scientist specializing in interaction, HCI ...\n\n5. [SCIENCE AND TECHNOLOGY PUBLICATIONS - SCITEPRESS](https://www.scitepress.org/Papers/2010/28944/)\nSource: Unknown source\n   Murano, Pietro, Holt, P. O. (2009) Anthropomorphic Feedback In User Interfaces: The Effect of Personality Traits, Context and Grice's Maxims on Effectiveness ...\n\nResults for tool call 'web_search' with arguments '{'query': 'Iram N. Khan publications before 2015'}':\n1. [‪Dr. Iram Khan‬ - ‪Google Scholar‬](https://scholar.google.com/citations?user=RzmqKwcAAAAJ&hl=en)\nSource: Unknown source\n   Iram Khan. Auditor General of Pakistan, Islamabad. Verified email at ... Veterinaria 3 (2), 9-13, 2015. 19, 2015. Managing dengue outbreak in Lahore ...\n\n2. [Iram KHAN | Joint Secretary to the Cabinet | PhD | Research profile](https://www.researchgate.net/profile/Iram-Khan-4)\nSource: Unknown source\n   Iram KHAN, Joint Secretary to the Cabinet | Cited by 115 | | Read 12 publications | Contact Iram KHAN.\n\n3. [Dr. Iram Khan - Independent Researcher - Academia.edu](https://independent.academia.edu/DrIramKhan)\nSource: Unknown source\n   Dr. Iram Khan: 37 Followers, 3 Following, 13 Research papers. Research interests: Sri Lanka, Indigenous Peoples Rights, and Management Science.\n\n4. [Iram Siraj - Department of Education](https://www.education.ox.ac.uk/person/iram-siraj/)\nSource: Unknown source\n   Amongst her many published works she has authored award-winning books including: Social Class and Educational Inequality the Role of Parents and Schools (2015) ...\n\n5. [Ms. Iram Khan Iqbal | Author - SciProfiles](https://sciprofiles.com/profile/378163)\nDate published: Feb 23, 2018\nSource: Unknown source\n   Iram Khan Iqbal's profile page generated by SciProfiles. SciProfiles provides open access to the scholarly community, offering comprehensive ..."
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Calling tools:\n{'tools': [{'name': 'crawl_page', 'arguments': {'url': 'https://pietromurano.org/publications.html', 'query': 'List all publications in chronological order and give the title of the first (earliest) publication.'}}]}"
+        }
+      ]
+    },
+    {
+      "role": "tool-response",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tool calling observation:\nResults for tool call 'crawl_page' with arguments '{'url': 'https://pietromurano.org/publications.html', 'query': 'List all publications in chronological order and give the title of the first (earliest) publication.'}':\n**Chronological List of Publications (earliest to latest)**  \n\n- 2000: *Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments* (International Presentation)  \n- 2001: *A New Software Agent 'Learning' Algorithm*; *Mapping Human-Oriented Information to Software Agents for Online Systems Usage*  \n- 2002: *Anthropomorphic Vs Non-Anthropomorphic Software Interface Feedback for Online Systems Usage*; *Effectiveness of Mapping Human-Oriented Information to Feedback From a Software Interface*  \n- 2003: *Anthropomorphic Vs Non-Anthropomorphic Software Interface Feedback for Online Factual Delivery*; *Augmenting Environments By Automated Sign Location and Text Detection* (Ritchings et al.)  \n- 2005: *Effectiveness of VRML Building Models for Direction Finding*; *Why Anthropomorphic User Interface Feedback Can be Effective and Preferred by Users*  \n- 2006: Book chapter: *Why Anthropomorphic User Interface Feedback can be Effective and Preferred by Users*  \n- 2007: Journal: *Anthropomorphic Feedback In User Interfaces: The Effect of Personality Traits, Context and Grice's Maxims on Effectiveness and Preferences*; *Usefulness of VRML Building Models in a Direction Finding Context*; Conference: *Anthropomorphic Vs Non-Anthropomorphic User Interface Feedback for Online Hotel Bookings*  \n- 2008: *Effectiveness and Preferences of Anthropomorphic User Interface Feedback in a PC Building Context and Cognitive Load*  \n- 2009: *Evaluation of Anthropomorphic User Interface Feedback in an Email Client Context and Affordances*; Book chapter: *Anthropomorphic Feedback In User Interfaces...* (in Cross-Disciplinary Advances)  \n- 2010: *Evaluation of an Anthropomorphic User Interface in a Telephone Bidding Context and Affordances*; *Effectiveness and Preferences of Anthropomorphic Feedback in a Statistics Context*  \n- 2011: *Evaluation of an Anthropomorphic User Interface in a Travel Reservation Context and Affordances*; *Evaluation of Human-Like Anthropomorphism in the Context of Online Bidding and Affordances*; *Anthropomorphic User Interface Feedback in a Sewing Context and Affordances*; *Evaluation of Anthropomorphic Feedback for an Online Auction and Affordances*  \n- 2012: *The Impact on Effectiveness and User Satisfaction of Menu Positioning on Web Pages*  \n- 2014: *A Comparative Study of the Usability of Touch-Based and Mouse-Based Interaction*  \n- 2015: *Pie Menus or Linear Menus, Which Is Better?*; *Menu Positioning on Web Pages. Does it Matter?*  \n- 2016: *A Universally Designed and Usable Data Visualization for A Mobile Application in the Context of Rheumatoid Arthritis*; *User Interface Menu Design Performance and User Preferences: A Review and Ways Forward*  \n- 2017: *Universal Design of User Interfaces in Self-driving Cars*  \n- 2018: *A Preliminary Investigation into the Usability of Force Touch Interaction in a Mobile Context*; *An Algorithm For Automatically Detecting Dyslexia On The Fly*; *A New User Interface for a Text Proofreading Web Portal in a Digitization and Crowdsourcing Context*  \n- 2019: *Security and User Interface Usability of Graphical Authentication Systems A Review*  \n- 2020: *A Preliminary Usability and Universal Design Evaluation of a Television App User Interface*; *A Usability Evaluation of Web User Interface Scrolling Types*  \n- 2021: *The Design and Evaluation of a New Smartwatch User Interface*  \n- 2022: *The Design and Evaluation of an Online Dictionary User Interface*; *Is Carousel Interaction Really Usable?*  \n- 2023: *Designing User Interface Toggles for Usability*; *The Usability of Hidden Functional Elements in Mobile User Interfaces*; Book chapter: *New Universal Design Heuristics for Mobile Augmented Reality Applications*  \n- 2024: Book chapter: *A Usability Investigation of Parallax Scrolling for Web Pages*; *Enhancing Learning Through Universally Designed Augmented Reality: A Comparative Study*; *The Usability of Persistent and Non-Persistent Headers on Web Pages*  \n- 2025: *Implementing Virtual Reality for Fire Evacuation Preparedness at Schools*; Book chapter: *Effective Nudging in Digital Environments*; *Towards Integrating Digital Preparedness into Higher Education*  \n- 2026: Book chapter: *A Usability and Universal Design Investigation into Scrolljacking for Web Pages*; *Virtual Reality Applications for Civilian Emergency Preparedness Training: A Bibliometric Review*  \n\n**First (Earliest) Publication Title:**  \n*Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments* (2000)"
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Calling tools:\n{'tools': [{'name': 'web_search', 'arguments': {'query': '\"Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments\"'}}]}"
+        }
+      ]
+    },
+    {
+      "role": "tool-response",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tool calling observation:\nResults for tool call 'web_search' with arguments '{'query': '\"Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments\"'}':\n1. [Publications - Pietro Murano](https://pietromurano.org/publications.html)\nSource: Unknown source\n   Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments Womens Engineering Society (WES) 73rd Annual ..."
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Calling tools:\n{'tools': [{'name': 'final_answer', 'arguments': {'answer': 'Effectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments'}}]}"
+        }
+      ]
+    },
+    {
+      "role": "tool-response",
+      "content": [
+        {
+          "type": "text",
+          "text": "Tool calling observation:\nEffectiveness of Mapping Human-Oriented Information to Software Agents for Online Teaching Environments"
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "elapsed_time": 182.85118341445923,
+    "total_tokens": 60087,
+    "prompt_tokens": 48592,
+    "completion_tokens": 11495,
+    "api_calls": 13
+  }
+}
