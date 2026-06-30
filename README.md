@@ -1,6 +1,7 @@
 # MemEvolve-Crossover
 
-This repository contains the complete reproducible code for the lab report Memory Systems that Evolve.
+This repository contains the complete reproducible code for the lab report **Memory Systems that Evolve**.
+
 Built upon the open-source MemEvolve framework, this work extends the original single-parent memory meta-evolution pipeline to support multi-parent crossover (K=2).
 I hybridize the Agent-KB and Voyager to generate three novel hybrid memory variants, with Echo as the optimal evolved architecture.
 All memory systems are fully evaluated on GAIA subset and the result is in [RESULTS.md](RESULTS.md).
@@ -41,11 +42,10 @@ Copy environment template and fill in your API keys:
 
 ```bash
 cp .env.example .env
-# Edit .env: OPENAI_API_KEY, SERPER_API_KEY, etc.
 ```
 
 Required keys:
-- `OPENAI_API_KEY` + `OPENAI_API_BASE` (I used DeepSeek: `https://api.deepseek.com`)
+- `OPENAI_API_KEY` + `OPENAI_API_BASE`
 - `SERPER_API_KEY` ([serper.dev](https://serper.dev/))
 - `WEB_ACCESS_PROVIDER=crawl4ai`**or** `JINA_API_KEY`
 
